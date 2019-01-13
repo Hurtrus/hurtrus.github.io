@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pwd on Hurst Systems</title>
+    <link>https://hurst.systems/tags/pwd/</link>
+    <description>Recent content in Pwd on Hurst Systems</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 20 Nov 2018 14:53:23 -0500</lastBuildDate>
+    
+	<atom:link href="https://hurst.systems/tags/pwd/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Present Working Directory</title>
+      <link>https://hurst.systems/posts/powershell-present-working-directory/understanding-present-working-directory-pwd/</link>
+      <pubDate>Tue, 20 Nov 2018 14:53:23 -0500</pubDate>
+      
+      <guid>https://hurst.systems/posts/powershell-present-working-directory/understanding-present-working-directory-pwd/</guid>
+      <description>Understanding Present Working Directory $PWD VSCode VSCode sets the $PWD (&amp;ldquo;present working directory”) to the Workspace location
+PowerShell ISE / CLI For the PowerShell ISE or PowerShell CLI you can set the $PWD in multiple ways Edit the Shortcut “Start in:” location variable to your desired path
+Working with the $PWD within the Script Explain why you need this and what this is doing
+1 2 3  # Creates new Profile ps1  if (!</description>
+    </item>
+    
+  </channel>
+</rss>
