@@ -8,7 +8,7 @@
   </url>
   
   <url>
-    <loc>https://hurst.systems/posts/troubleshooting-user-homedrive-auto-remapping-issue/troubleshooting-user-homedrive-auto-remapping-issue/</loc>
+    <loc>https://hurst.systems/posts/troubleshooting-homedrive-remapping/</loc>
     <lastmod>2019-04-17T19:29:23-05:00</lastmod>
   </url>
   
@@ -95,13 +95,13 @@
   </url>
   
   <url>
-    <loc>https://hurst.systems/categories/powershell/</loc>
+    <loc>https://hurst.systems/tags/powershell/</loc>
     <lastmod>2018-10-23T10:29:23-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://hurst.systems/tags/powershell/</loc>
+    <loc>https://hurst.systems/categories/powershell/</loc>
     <lastmod>2018-10-23T10:29:23-05:00</lastmod>
     <priority>0</priority>
   </url>

@@ -2,7 +2,7 @@
 <html lang="en-us">
 <head>
 	<title>
-	The Adventure Begins
+	TroubleShooting a Users HomeDrive Auto-Remapping
 </title><style>
 body {
 	display: block;
@@ -21,7 +21,7 @@ body, body.pushable {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="author" content="Scott Hurst" />
-	<meta name="description" content="Getting it started" />
+	<meta name="description" content="Users homedrive mapping automatically changing to different letter after reboot or upon logging into Windows" />
 <meta name="generator" content="Hugo 0.53" />
 
 <link rel="shortcut icon" href="/img/favicon.ico">
@@ -85,17 +85,17 @@ var bodyBgSwitchIndex = 0;
 </h3>
 </section><section class="ui attached center aligned inverted segment sidebar-dream-tags">
 
-	<a class="ui label olive " href="/tags/blog" title="blog">blog</a>
+	<a class="ui label yellow " href="/tags/blog" title="blog">blog</a>
 
-	<a class="ui label pink " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
+	<a class="ui label orange " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
 
 	<a class="ui label yellow " href="/tags/powershell" title="powershell">powershell</a>
 
-	<a class="ui label violet " href="/tags/pwd" title="pwd">pwd</a>
+	<a class="ui label red " href="/tags/pwd" title="pwd">pwd</a>
 
-	<a class="ui label brown " href="/tags/troubleshooting" title="troubleshooting">troubleshooting</a>
+	<a class="ui label pink " href="/tags/troubleshooting" title="troubleshooting">troubleshooting</a>
 
-	<a class="ui label teal " href="/tags/twitter" title="twitter">twitter</a>
+	<a class="ui label olive " href="/tags/twitter" title="twitter">twitter</a>
 
 </section>
 	<section class="ui attached inverted segment sidebar-dream-categories both flexbox">
@@ -251,15 +251,15 @@ var bodyBgSwitchIndex = 0;
 			</div></div>
 		<div id="tag-category" class=" content"><section class="ui attached center aligned inverted segment dream-tags none flexbox">
 
-	<a class="ui label blue " href="/tags/blog" title="blog">blog</a>
+	<a class="ui label olive " href="/tags/blog" title="blog">blog</a>
 
-	<a class="ui label red " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
+	<a class="ui label brown " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
 
 	<a class="ui label pink " href="/tags/powershell" title="powershell">powershell</a>
 
-	<a class="ui label purple " href="/tags/pwd" title="pwd">pwd</a>
+	<a class="ui label orange " href="/tags/pwd" title="pwd">pwd</a>
 
-	<a class="ui label green " href="/tags/troubleshooting" title="troubleshooting">troubleshooting</a>
+	<a class="ui label yellow " href="/tags/troubleshooting" title="troubleshooting">troubleshooting</a>
 
 	<a class="ui label green " href="/tags/twitter" title="twitter">twitter</a>
 
@@ -358,22 +358,26 @@ var bodyBgSwitchIndex = 0;
 	<div class="sixteen wide mobile fifteen wide tablet twelve wide computer column post-list">
 		<section class="ui secondary top attached black segment post-head">
 			<h1 class="post-title">
-				The Adventure Begins
+				TroubleShooting a Users HomeDrive Auto-Remapping
 			</h1>
 			<div class="sub header">
-					<div><span><i class="calendar outline icon"></i>Jul 10, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="https://hurst.systems/posts/the-adventure-begins/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="ad034a77ac78bbceff16af9935636712"></a></span></div>
-					<div><span><i class="clock outline icon"></i>2 min read</span></div>
-					<div><span><i class="angle double up icon"></i>Last updated on Jul 10, 2018</span></div>
+					<div><span><i class="calendar outline icon"></i>Apr 17, 2019</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="https://hurst.systems/posts/troubleshooting-homedrive-remapping/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="bc10e6e83fe4fb12a05473cb720a25d2"></a></span></div>
+					<div><span><i class="clock outline icon"></i>4 min read</span></div>
+					<div><span><i class="angle double up icon"></i>Last updated on Apr 17, 2019</span></div>
 			</div>
 			<hr><div class="toc"><nav id="TableOfContents">
 <ul>
-<li><a href="#the-adventure-begins">The Adventure Begins</a>
+<li>
 <ul>
-<li><a href="#in-the-beginning">In the beginning&hellip;</a></li>
-<li><a href="#decisions-were-made">Decisions were made</a></li>
-<li><a href="#preparing-for-an-adventure">Preparing for an adventure</a></li>
-<li><a href="#seeking-the-wisdom-of-the-masters">Seeking the wisdom of the masters</a></li>
-<li><a href="#forge-forward-into-the-night">Forge forward into the night</a></li>
+<li>
+<ul>
+<li><a href="#example-of-the-error-in-the-code">Example of the error in the code:</a></li>
+<li><a href="#correction-of-the-error-in-the-code">Correction of the error in the code:</a></li>
+<li><a href="#find-all-the-user-homedrive-letters-without-a-colon">Find all the user HomeDrive letters without a colon</a></li>
+<li><a href="#how-to-find-the-users-effected-by-this-issue">How to find the users effected by this issue:</a></li>
+<li><a href="#correct-users-effected-by-this-issue">Correct users effected by this issue</a></li>
+<li><a href="#check-an-individual-user">Check an individual user</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav></div>
@@ -381,56 +385,130 @@ var bodyBgSwitchIndex = 0;
 			<article class="post-content twemoji">
 				
 
-<p><head>
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@The_Scott_Hurst">
-<meta name="twitter:creator" content="@The_Scott_Hurst">
-<meta name="twitter:title" content="PowerShell: The Adventure Begins!">
-<meta name="twitter:description" content="Welcome hero! Gather your sword and gird up your loins, it is time to set off on an ADVENTURE!">
-<meta name="twitter:image" content="https://p0wershell.com/wp-content/uploads/2016/08/PowerShell-logo.png">
-</head></p>
+<p>We had a select few new users that would have their &lsquo;HomeDrive&rsquo; set to N:\ in Active Directory, but the drive letter would be Z:\ when they logged into their machine. We would remap it within windows back to N:\ but upon logging out and back in again, the drive letter would change back to Z:</p>
 
-<h1 id="the-adventure-begins">The Adventure Begins&nbsp;<a class="anchor" href="#the-adventure-begins"><i class="small linkify icon"></i></a> </h1>
+<p><img src="wait.gif" alt="" /></p>
 
-<h2 id="in-the-beginning">In the beginning&hellip;&nbsp;<a class="anchor" href="#in-the-beginning"><i class="small linkify icon"></i></a> </h2>
+<p>I scoured the (local and global) GPO&rsquo;s to make absolutely sure that nothing was remapping the HomeDrive. I didn&rsquo;t figure that it was a GPO since it would have been consistent and widespread across the user base, but I wanted to rule it out because the behavior was like that of a GPO.</p>
 
-<p>This blog is probably well over due, if for no other reason than just keeping track of the things I learn in PowerShell so that I don&rsquo;t forget them later.  This &ldquo;blog&rdquo; might even work great in keeping track of those little details that make different commands work..just so&hellip; I might even remember that I wrote down those little gotchas in a place to remind myself. Regardless, it was well over due.</p>
+<p><img src="jim-halpert-computer.gif" alt="" /></p>
 
-<p><img src="/img/postImages/traintrack.jpg" alt="Train Tracks" /></p>
+<p>That was a couple hours of my day that I would never get back.</p>
 
-<h2 id="decisions-were-made">Decisions were made&nbsp;<a class="anchor" href="#decisions-were-made"><i class="small linkify icon"></i></a> </h2>
+<p>Next I checked Group Memberships, Organizational Units, days created.</p>
 
-<p>Lately I decided that I need to deepen my knowledge and understanding of PowerShell.  I know my way around the commands, and have created many wonderful tools that my co-workers and I use every day. I&rsquo;ve automated or simplified a great deal of the day to day work that made up the daily chores when I first joined my team. Created tools to do audits, to help auditors get the information they require (without having to engage me for it), or just quick and dirty scripts to do what needs done once. I just feel its time to take things to the next level.</p>
+<p>These four users had <u>exactly</u> the same Group Memberships, and were in the <u>same</u> Organizational Units as the other six that were created in the same time period. The problem was, I was still thinking GPO, and checking these properties were a symptom of this line of thought.</p>
 
-<h2 id="preparing-for-an-adventure">Preparing for an adventure&nbsp;<a class="anchor" href="#preparing-for-an-adventure"><i class="small linkify icon"></i></a> </h2>
+<p>I realize I needed to started over and focus on the users.</p>
 
-<p>Ascending to that next level leads to buying a lot of books, watching a lot of videos, and reading a lot of blogs written by the legends of the PowerShell world. I started to notice a pattern, each one of these pros were saying the same thing &ldquo;Get involved in and give back to the community that has given you so much.&rdquo; Start a Blog, Find people on Twitter, Start a vlog on YouTube, contribute to Reddit r/PowerShell, the PowerShell channel on discord/slack/irc/etc, forums, and the other places people look for help/advice. Network.</p>
+<p>I also realize that I may need some help. I explain the situation to my co-worker and he remembered working on an issue a few months back where the user had an invalid “HomeDrive” setting on their AD Object. The GUI showed it properly mapped to ‘N:’ but PowerShell exposed the HomeDrive property was actually ‘N’ - with no colon at the end.<br />
+<em>DUNT DUNT DUHHHH</em></p>
 
-<h2 id="seeking-the-wisdom-of-the-masters">Seeking the wisdom of the masters&nbsp;<a class="anchor" href="#seeking-the-wisdom-of-the-masters"><i class="small linkify icon"></i></a> </h2>
+<p>A check of the effected users AD Object in PowerShell revealed that it indeed was only ‘N’ - a check of a good account was ‘N:’.</p>
 
-<p><a href="https://donjones.com/" target="_blank">Don Jones</a>, thank you for your books, forum posts, blogs and videos where you tell the community to get out there.</p>
+<p>The HomeDrive property was missing the  &lsquo; <strong>:</strong> &lsquo; at the end.</p>
 
-<p><a href="https://www.adamtheautomator.com/" target="_blank">Adam Bertram</a>, thank you for this <a href="https://youtu.be/Zbc6bjCHUvg" target="_blank">video</a>,&nbsp; it was the final kick in the pants, shot of courage, dose of encouragement I needed.</p>
+<p><strong>EUREKA!</strong></p>
 
-<h2 id="forge-forward-into-the-night">Forge forward into the night&nbsp;<a class="anchor" href="#forge-forward-into-the-night"><i class="small linkify icon"></i></a> </h2>
+<p><img src="YES.gif" alt="" /></p>
 
-<p>Sometimes just having available the journal of the previous encounters, can help in the battle you are currently fighting.</p>
+<p>Running the command:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Get-ADUser</span> <span class="n">-Filter</span> <span class="p">{</span><span class="n">Homedrive</span> <span class="o">-eq</span> <span class="s1">&#39;N&#39;</span><span class="p">}</span> <span class="n">-Properties</span> <span class="n">Homedrive</span>  </code></pre></td></tr></table>
+</div>
+</div>
+<p>revealed ~160 other users that also had this issue associated with their account. No idea why none of these others had not reported problems.</p>
+
+<p>Since ‘N’ was an invalid drive setting, windows defaulted to using the last available drive letter and assigned that as the HomeDrive.</p>
+
+<p>Root cause of the issue was within the script that was being used to create new user accounts. Examination of the code uncovered that if the Location drop down was set to  Cincinnati the -HomeDrive property was set to be ‘N’ &hellip;without the colon, where as the code to set other locations were properly being set as ‘N:’</p>
+
+<h3 id="example-of-the-error-in-the-code">Example of the error in the code:&nbsp;<a class="anchor" href="#example-of-the-error-in-the-code"><i class="small linkify icon"></i></a> </h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="k">if</span> <span class="p">(</span><span class="nv">$LocationCombo</span><span class="p">.</span><span class="n">SelectedItem</span> <span class="o">-like</span> <span class="s2">&#34; Cincinnati*&#34;</span><span class="p">)</span> <span class="p">{</span> <span class="nv">$CommandOutput</span> <span class="p">+=</span> <span class="s2">&#34; -HomeDrive &#34;&#34;N&#34;&#34; -HomeDirectory &#34;&#34;\\DFSRoot\Reds\usersOH\</span><span class="p">$(</span><span class="nv">$Usernamebox</span><span class="p">.</span><span class="n">Text</span><span class="p">)</span><span class="s2">&#34;&#34;&#34;</span> <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="correction-of-the-error-in-the-code">Correction of the error in the code:&nbsp;<a class="anchor" href="#correction-of-the-error-in-the-code"><i class="small linkify icon"></i></a> </h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="k">if</span> <span class="p">(</span><span class="nv">$LocationCombo</span><span class="p">.</span><span class="n">SelectedItem</span> <span class="o">-like</span> <span class="s2">&#34; Cincinnati*&#34;</span><span class="p">)</span> <span class="p">{</span> <span class="nv">$CommandOutput</span> <span class="p">+=</span> <span class="s2">&#34; -HomeDrive &#34;&#34;N:&#34;&#34; -HomeDirectory &#34;&#34;\\DFSRoot\Reds\usersOH\</span><span class="p">$(</span><span class="nv">$Usernamebox</span><span class="p">.</span><span class="n">Text</span><span class="p">)</span><span class="s2">&#34;&#34;&#34;</span> <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="find-all-the-user-homedrive-letters-without-a-colon">Find all the user HomeDrive letters without a colon&nbsp;<a class="anchor" href="#find-all-the-user-homedrive-letters-without-a-colon"><i class="small linkify icon"></i></a> </h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Get-ADUser</span> <span class="n">-Filter</span> <span class="p">{</span><span class="n">Homedrive</span> <span class="o">-notlike</span> <span class="s1">&#39;*:&#39;</span><span class="p">}</span> <span class="n">-Properties</span> <span class="n">Homedrive</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">Enabled</span> <span class="o">-eq</span> <span class="nv">$true</span><span class="p">}</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">HomeDrive</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>The above code should give you a list of all the users with the error, regardless of what drive letter was assigned.</p>
+
+<h3 id="how-to-find-the-users-effected-by-this-issue">How to find the users effected by this issue:&nbsp;<a class="anchor" href="#how-to-find-the-users-effected-by-this-issue"><i class="small linkify icon"></i></a> </h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nv">$NDriveUsers</span> <span class="p">=</span> <span class="nb">Get-ADUser</span> <span class="n">-Filter</span> <span class="p">{</span><span class="n">Homedrive</span> <span class="o">-eq</span> <span class="s1">&#39;N&#39;</span><span class="p">}</span> <span class="n">-Properties</span> <span class="n">Homedrive</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="correct-users-effected-by-this-issue">Correct users effected by this issue&nbsp;<a class="anchor" href="#correct-users-effected-by-this-issue"><i class="small linkify icon"></i></a> </h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nv">$NDriveUsers</span> <span class="p">|</span> <span class="nb">Set-ADUser</span> <span class="err">–</span><span class="n">HomeDrive</span> <span class="err">“</span><span class="n">N</span><span class="err">:”</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="check-an-individual-user">Check an individual user&nbsp;<a class="anchor" href="#check-an-individual-user"><i class="small linkify icon"></i></a> </h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Get-ADUser</span> <span class="n">SamAccountName</span> <span class="n">-Properties</span> <span class="n">Homedrive</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>So the TL;DR version of this is:
+ If you have a user whose HomeDrive mapping is changing to something other that what it should be set to within Active Directory, check that users AD Object, as it may have an invalid property setting.</p>
+
+<p>Correct your new user creation scripts, because the GUI users do not have this issue.</p>
+
+<p>And remember my fellow Active Directory brethren, the HomeDrive property requires a &lsquo; : &lsquo; after the drive letter.</p>
+
+<p>Finally, share your experiences&hellip; once I evoked the assistance of my teammate the issue was resolved within 30 minutes&hellip; including root cause analysis and remediation of user accounts and correction of the root cause.</p>
+
+<p>Mathias, thank you.. I owe you a beer!</p>
 
 			</article>
 		</section>
 		<section class="ui secondary attached segment dream-tags">
 
-	<a class="ui label green " href="/tags/blog" title="blog">blog</a>
+	<a class="ui label pink " href="/tags/blog" title="blog">blog</a>
 
 	<a class="ui label blue " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
 
-	<a class="ui label pink " href="/tags/powershell" title="powershell">powershell</a>
+	<a class="ui label olive " href="/tags/powershell" title="powershell">powershell</a>
 
-	<a class="ui label orange " href="/tags/pwd" title="pwd">pwd</a>
+	<a class="ui label teal " href="/tags/pwd" title="pwd">pwd</a>
 
-	<a class="ui label red " href="/tags/troubleshooting" title="troubleshooting">troubleshooting</a>
+	<a class="ui label yellow " href="/tags/troubleshooting" title="troubleshooting">troubleshooting</a>
 
-	<a class="ui label purple " href="/tags/twitter" title="twitter">twitter</a>
+	<a class="ui label brown " href="/tags/twitter" title="twitter">twitter</a>
 
 
 		</section><section class="ui secondary  attached segment share row box"><div class="author">
@@ -450,7 +528,7 @@ var bodyBgSwitchIndex = 0;
 			'width=626,height=436'); return false;">
 		<button class="ui facebook button"><i class="facebook icon"></i>Share</button>
 	</div>
-	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;The Adventure Begins &quot; by @The_Scott_Hurst https:\/\/hurst.systems\/posts\/the-adventure-begins\/','_self')">
+	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;TroubleShooting a Users HomeDrive Auto-Remapping &quot; by @The_Scott_Hurst https:\/\/hurst.systems\/posts\/troubleshooting-homedrive-remapping\/','_self')">
 		<button class="ui twitter button"><i class="twitter icon"></i>Tweet</button>
 	</div>
 </section>
@@ -462,8 +540,8 @@ var bodyBgSwitchIndex = 0;
 		<div class="ui secondary bottom attached stacked segment disqus"><div id="disqus_thread"></div>
 <script>
 	var disqus_config = function () {
-		this.page.url = 'https:\/\/hurst.systems\/posts\/the-adventure-begins\/';
-		this.page.identifier = 'ad034a77ac78bbceff16af9935636712';
+		this.page.url = 'https:\/\/hurst.systems\/posts\/troubleshooting-homedrive-remapping\/';
+		this.page.identifier = 'bc10e6e83fe4fb12a05473cb720a25d2';
 	};
 	(function() {
    	var d = document, s = d.createElement('script');
