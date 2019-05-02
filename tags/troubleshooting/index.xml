@@ -17,9 +17,7 @@
       <pubDate>Wed, 17 Apr 2019 19:29:23 -0500</pubDate>
       
       <guid>https://hurst.systems/posts/troubleshooting-homedrive-remapping/</guid>
-      <description>We had a select few new users that would have their &amp;lsquo;HomeDrive&amp;rsquo; set to N:\ in Active Directory, but the drive letter would be Z:\ when they logged into their machine.
-The Desktop Team would remap it within windows back to N:\ but upon logging out and back in again, the drive letter would revert back to Z:
-I scoured the (local and global) GPO&amp;rsquo;s to make absolutely sure that nothing was remapping the HomeDrive.</description>
+      <description>Issue:  Four users report that their &amp;lsquo;HomeDrive&amp;rsquo; mapping is defaulting to Z:\ during login. Desktop Team reports that even after mapping and remapping the drive to N:\ within windows the drive reverts back to Z:\ Active Directory Users and Computers shows that the &amp;lsquo;HomeDrive&amp;rsquo; set to N:\ on the profile tab of the AD User Object Desktop Team suspects that a GPO is making changes to the drive mappings for these users.</description>
     </item>
     
   </channel>
