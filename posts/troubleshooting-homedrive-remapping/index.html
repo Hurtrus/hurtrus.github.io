@@ -85,17 +85,17 @@ var bodyBgSwitchIndex = 0;
 </h3>
 </section><section class="ui attached center aligned inverted segment sidebar-dream-tags">
 
-	<a class="ui label yellow " href="/tags/blog" title="blog">blog</a>
+	<a class="ui label pink " href="/tags/blog" title="blog">blog</a>
 
-	<a class="ui label orange " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
+	<a class="ui label teal " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
 
-	<a class="ui label yellow " href="/tags/powershell" title="powershell">powershell</a>
+	<a class="ui label olive " href="/tags/powershell" title="powershell">powershell</a>
 
-	<a class="ui label red " href="/tags/pwd" title="pwd">pwd</a>
+	<a class="ui label teal " href="/tags/pwd" title="pwd">pwd</a>
 
-	<a class="ui label pink " href="/tags/troubleshooting" title="troubleshooting">troubleshooting</a>
+	<a class="ui label blue " href="/tags/troubleshooting" title="troubleshooting">troubleshooting</a>
 
-	<a class="ui label olive " href="/tags/twitter" title="twitter">twitter</a>
+	<a class="ui label pink " href="/tags/twitter" title="twitter">twitter</a>
 
 </section>
 	<section class="ui attached inverted segment sidebar-dream-categories both flexbox">
@@ -251,17 +251,17 @@ var bodyBgSwitchIndex = 0;
 			</div></div>
 		<div id="tag-category" class=" content"><section class="ui attached center aligned inverted segment dream-tags none flexbox">
 
-	<a class="ui label olive " href="/tags/blog" title="blog">blog</a>
+	<a class="ui label green " href="/tags/blog" title="blog">blog</a>
 
-	<a class="ui label brown " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
+	<a class="ui label blue " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
 
-	<a class="ui label pink " href="/tags/powershell" title="powershell">powershell</a>
+	<a class="ui label orange " href="/tags/powershell" title="powershell">powershell</a>
 
-	<a class="ui label orange " href="/tags/pwd" title="pwd">pwd</a>
+	<a class="ui label green " href="/tags/pwd" title="pwd">pwd</a>
 
-	<a class="ui label yellow " href="/tags/troubleshooting" title="troubleshooting">troubleshooting</a>
+	<a class="ui label orange " href="/tags/troubleshooting" title="troubleshooting">troubleshooting</a>
 
-	<a class="ui label green " href="/tags/twitter" title="twitter">twitter</a>
+	<a class="ui label orange " href="/tags/twitter" title="twitter">twitter</a>
 
 </section><section class="ui attached inverted segment dream-categories both flexbox">
 				<div class="inverted accordion">
@@ -385,26 +385,29 @@ var bodyBgSwitchIndex = 0;
 			<article class="post-content twemoji">
 				
 
-<p>We had a select few new users that would have their &lsquo;HomeDrive&rsquo; set to N:\ in Active Directory, but the drive letter would be Z:\ when they logged into their machine. We would remap it within windows back to N:\ but upon logging out and back in again, the drive letter would change back to Z:</p>
+<p>We had a select few new users that would have their &lsquo;HomeDrive&rsquo; set to N:\ in Active Directory, but the drive letter would be Z:\ when they logged into their machine.</p>
+
+<p>The Desktop Team would remap it <em>within windows</em> back to N:\ but upon logging out and back in again, the drive letter would revert back to Z:</p>
 
 <p><img src="wait.gif" alt="" /></p>
 
-<p>I scoured the (local and global) GPO&rsquo;s to make absolutely sure that nothing was remapping the HomeDrive. I didn&rsquo;t figure that it was a GPO since it would have been consistent and widespread across the user base, but I wanted to rule it out because the behavior was like that of a GPO.</p>
+<p>I scoured the (local and global) GPO&rsquo;s to make absolutely sure that nothing was remapping the HomeDrive.</p>
+
+<p>I was certain that it wasn&rsquo;t a GPO since it would have been consistent and widespread across the user base, but I wanted to rule it out, mainly so that no one could blame GPO <em>because the behavior was like that of a GPO.</em></p>
 
 <p><img src="jim-halpert-computer.gif" alt="" /></p>
 
-<p>That was a couple hours of my day that I would never get back.</p>
-
 <p>Next I checked Group Memberships, Organizational Units, days created.</p>
 
-<p>These four users had <u>exactly</u> the same Group Memberships, and were in the <u>same</u> Organizational Units as the other six that were created in the same time period. The problem was, I was still thinking GPO, and checking these properties were a symptom of this line of thought.</p>
+<p>These four users had <u>exactly</u> the same Group Memberships, and were in the <u>same</u> Organizational Units as the other six that were created in the same time period.</p>
 
-<p>I realize I needed to started over and focus on the users.</p>
+<p>I now had the documentation to backup my assertion that it was not GPO.</p>
 
-<p>I also realize that I may need some help. I explain the situation to my co-worker and he remembered working on an issue a few months back where the user had an invalid “HomeDrive” setting on their AD Object. The GUI showed it properly mapped to ‘N:’ but PowerShell exposed the HomeDrive property was actually ‘N’ - with no colon at the end.<br />
-<em>DUNT DUNT DUHHHH</em></p>
+<p>I realize that it may be time to ask for some help.</p>
 
-<p>A check of the effected users AD Object in PowerShell revealed that it indeed was only ‘N’ - a check of a good account was ‘N:’.</p>
+<p>I explain the situation to a co-worker and they remembered working on an issue a few months earlier where the user had an invalid “HomeDrive” setting on their AD Object. The GUI showed it properly mapped to ‘N:’ but PowerShell exposed the HomeDrive property was actually ‘N’ - with no colon at the end.</p>
+
+<p>A check of the effected users AD Object in PowerShell revealed that it indeed was only ‘N’ - a check of a good account showed this same property was ‘N:’.</p>
 
 <p>The HomeDrive property was missing the  &lsquo; <strong>:</strong> &lsquo; at the end.</p>
 
@@ -431,18 +434,30 @@ var bodyBgSwitchIndex = 0;
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="k">if</span> <span class="p">(</span><span class="nv">$LocationCombo</span><span class="p">.</span><span class="n">SelectedItem</span> <span class="o">-like</span> <span class="s2">&#34; Cincinnati*&#34;</span><span class="p">)</span> <span class="p">{</span> <span class="nv">$CommandOutput</span> <span class="p">+=</span> <span class="s2">&#34; -HomeDrive &#34;&#34;N&#34;&#34; -HomeDirectory &#34;&#34;\\DFSRoot\Reds\usersOH\</span><span class="p">$(</span><span class="nv">$Usernamebox</span><span class="p">.</span><span class="n">Text</span><span class="p">)</span><span class="s2">&#34;&#34;&#34;</span> <span class="p">}</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="k">if</span> <span class="p">(</span><span class="nv">$LocationCombo</span><span class="p">.</span><span class="n">SelectedItem</span> <span class="o">-like</span> <span class="s2">&#34; Cincinnati*&#34;</span><span class="p">)</span> 
+<span class="p">{</span> 
+    <span class="nv">$CommandOutput</span> <span class="p">+=</span> <span class="s2">&#34; -HomeDrive &#34;&#34;N&#34;&#34; -HomeDirectory &#34;&#34;\\DFSRoot\Reds\usersOH\</span><span class="p">$(</span><span class="nv">$Usernamebox</span><span class="p">.</span><span class="n">Text</span><span class="p">)</span><span class="s2">&#34;&#34;&#34;</span>
+<span class="p">}</span></code></pre></td></tr></table>
 </div>
 </div>
 <h3 id="correction-of-the-error-in-the-code">Correction of the error in the code:&nbsp;<a class="anchor" href="#correction-of-the-error-in-the-code"><i class="small linkify icon"></i></a> </h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="k">if</span> <span class="p">(</span><span class="nv">$LocationCombo</span><span class="p">.</span><span class="n">SelectedItem</span> <span class="o">-like</span> <span class="s2">&#34; Cincinnati*&#34;</span><span class="p">)</span> <span class="p">{</span> <span class="nv">$CommandOutput</span> <span class="p">+=</span> <span class="s2">&#34; -HomeDrive &#34;&#34;N:&#34;&#34; -HomeDirectory &#34;&#34;\\DFSRoot\Reds\usersOH\</span><span class="p">$(</span><span class="nv">$Usernamebox</span><span class="p">.</span><span class="n">Text</span><span class="p">)</span><span class="s2">&#34;&#34;&#34;</span> <span class="p">}</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="k">if</span> <span class="p">(</span><span class="nv">$LocationCombo</span><span class="p">.</span><span class="n">SelectedItem</span> <span class="o">-like</span> <span class="s2">&#34; Cincinnati*&#34;</span><span class="p">)</span> 
+<span class="p">{</span> 
+    <span class="nv">$CommandOutput</span> <span class="p">+=</span> <span class="s2">&#34; -HomeDrive &#34;&#34;N:&#34;&#34; -HomeDirectory &#34;&#34;\\DFSRoot\Reds\usersOH\</span><span class="p">$(</span><span class="nv">$Usernamebox</span><span class="p">.</span><span class="n">Text</span><span class="p">)</span><span class="s2">&#34;&#34;&#34;</span>
+<span class="p">}</span></code></pre></td></tr></table>
 </div>
 </div>
 <h3 id="find-all-the-user-homedrive-letters-without-a-colon">Find all the user HomeDrive letters without a colon&nbsp;<a class="anchor" href="#find-all-the-user-homedrive-letters-without-a-colon"><i class="small linkify icon"></i></a> </h3>
@@ -483,14 +498,16 @@ var bodyBgSwitchIndex = 0;
 <pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Get-ADUser</span> <span class="n">SamAccountName</span> <span class="n">-Properties</span> <span class="n">Homedrive</span></code></pre></td></tr></table>
 </div>
 </div>
-<p>So the TL;DR version of this is:
+<p><br><br></p>
+
+<p>So the TL;DR:<br>
  If you have a user whose HomeDrive mapping is changing to something other that what it should be set to within Active Directory, check that users AD Object, as it may have an invalid property setting.</p>
 
 <p>Correct your new user creation scripts, because the GUI users do not have this issue.</p>
 
 <p>And remember my fellow Active Directory brethren, the HomeDrive property requires a &lsquo; : &lsquo; after the drive letter.</p>
 
-<p>Finally, share your experiences&hellip; once I evoked the assistance of my teammate the issue was resolved within 30 minutes&hellip; including root cause analysis and remediation of user accounts and correction of the root cause.</p>
+<p>Finally, share your experiences&hellip; once I evoked the assistance of my teammate the issue was resolved within 30 minutes&hellip; including root cause analysis, remediation of user accounts, and correction of the root cause.</p>
 
 <p>Mathias, thank you.. I owe you a beer!</p>
 
@@ -498,17 +515,17 @@ var bodyBgSwitchIndex = 0;
 		</section>
 		<section class="ui secondary attached segment dream-tags">
 
-	<a class="ui label pink " href="/tags/blog" title="blog">blog</a>
+	<a class="ui label yellow " href="/tags/blog" title="blog">blog</a>
 
-	<a class="ui label blue " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
+	<a class="ui label brown " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
 
 	<a class="ui label olive " href="/tags/powershell" title="powershell">powershell</a>
 
 	<a class="ui label teal " href="/tags/pwd" title="pwd">pwd</a>
 
-	<a class="ui label yellow " href="/tags/troubleshooting" title="troubleshooting">troubleshooting</a>
+	<a class="ui label red " href="/tags/troubleshooting" title="troubleshooting">troubleshooting</a>
 
-	<a class="ui label brown " href="/tags/twitter" title="twitter">twitter</a>
+	<a class="ui label yellow " href="/tags/twitter" title="twitter">twitter</a>
 
 
 		</section><section class="ui secondary  attached segment share row box"><div class="author">
