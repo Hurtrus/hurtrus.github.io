@@ -8,6 +8,11 @@
   </url>
   
   <url>
+    <loc>https://hurst.systems/posts/troubleshooting-user-homedrive-auto-remapping-issue/troubleshooting-user-homedrive-auto-remapping-issue/</loc>
+    <lastmod>2019-04-17T19:29:23-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://hurst.systems/posts/powershell-dot-sourcing/</loc>
     <lastmod>2018-11-20T14:53:23-05:00</lastmod>
   </url>
@@ -90,13 +95,13 @@
   </url>
   
   <url>
-    <loc>https://hurst.systems/tags/powershell/</loc>
+    <loc>https://hurst.systems/categories/powershell/</loc>
     <lastmod>2018-10-23T10:29:23-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://hurst.systems/categories/powershell/</loc>
+    <loc>https://hurst.systems/tags/powershell/</loc>
     <lastmod>2018-10-23T10:29:23-05:00</lastmod>
     <priority>0</priority>
   </url>
@@ -110,6 +115,12 @@
   <url>
     <loc>https://hurst.systems/tags/</loc>
     <lastmod>2018-07-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://hurst.systems/tags/troubleshooting/</loc>
+    <lastmod>2019-04-17T19:29:23-05:00</lastmod>
     <priority>0</priority>
   </url>
   

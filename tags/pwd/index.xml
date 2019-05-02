@@ -17,10 +17,9 @@
       <pubDate>Tue, 20 Nov 2018 14:53:23 -0500</pubDate>
       
       <guid>https://hurst.systems/posts/powershell-present-working-directory/understanding-present-working-directory-pwd/</guid>
-      <description>Understanding Present Working Directory $PWD VSCode VSCode sets the $PWD (&amp;ldquo;present working directory”) to the Workspace location
-PowerShell ISE / CLI For the PowerShell ISE or PowerShell CLI you can set the $PWD in multiple ways Edit the Shortcut “Start in:” location variable to your desired path
-Working with the $PWD within the Script Explain why you need this and what this is doing
-1 2 3  # Creates new Profile ps1  if (!</description>
+      <description>Understanding your location - ($pwd / Get-Location) $pwd is an automatic variable which contains PowerShell&amp;rsquo;s current location. $pwd, which stands for &amp;ldquo;print working directory&amp;rdquo;, and functions like the PowerShell command &amp;ldquo;Get-Location&amp;rdquo;.
+You may see me refer to $pwd as &amp;ldquo;Present Working Directory&amp;rdquo; because it also fits the abbreviation and it was always easier for me to remember its function.
+VSCode VSCode sets the $pwd (&amp;ldquo;present working directory”) to the current Workspace location</description>
     </item>
     
   </channel>

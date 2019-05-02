@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Troubleshooting on Hurst Systems</title>
+    <link>https://hurst.systems/tags/troubleshooting/</link>
+    <description>Recent content in Troubleshooting on Hurst Systems</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 17 Apr 2019 19:29:23 -0500</lastBuildDate>
+    
+	<atom:link href="https://hurst.systems/tags/troubleshooting/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>TroubleShooting a Users HomeDrive Auto-Remapping</title>
+      <link>https://hurst.systems/posts/troubleshooting-user-homedrive-auto-remapping-issue/troubleshooting-user-homedrive-auto-remapping-issue/</link>
+      <pubDate>Wed, 17 Apr 2019 19:29:23 -0500</pubDate>
+      
+      <guid>https://hurst.systems/posts/troubleshooting-user-homedrive-auto-remapping-issue/troubleshooting-user-homedrive-auto-remapping-issue/</guid>
+      <description>We had a select few new users that would have their &amp;lsquo;HomeDrive&amp;rsquo; set to N:\ in Active Directory, but the drive letter would be Z:\ when they logged into their machine. We would remap it within windows back to N:\ but upon logging out and back in again, the drive letter would change back to Z:
+I scoured the (local and global) GPO&amp;rsquo;s to make absolutely sure that nothing was remapping the HomeDrive.</description>
+    </item>
+    
+  </channel>
+</rss>

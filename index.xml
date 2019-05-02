@@ -23,6 +23,16 @@ We can also tell try to be on the lookout for other types of errors, those errro
     </item>
     
     <item>
+      <title>TroubleShooting a Users HomeDrive Auto-Remapping</title>
+      <link>https://hurst.systems/posts/troubleshooting-user-homedrive-auto-remapping-issue/troubleshooting-user-homedrive-auto-remapping-issue/</link>
+      <pubDate>Wed, 17 Apr 2019 19:29:23 -0500</pubDate>
+      
+      <guid>https://hurst.systems/posts/troubleshooting-user-homedrive-auto-remapping-issue/troubleshooting-user-homedrive-auto-remapping-issue/</guid>
+      <description>We had a select few new users that would have their &amp;lsquo;HomeDrive&amp;rsquo; set to N:\ in Active Directory, but the drive letter would be Z:\ when they logged into their machine. We would remap it within windows back to N:\ but upon logging out and back in again, the drive letter would change back to Z:
+I scoured the (local and global) GPO&amp;rsquo;s to make absolutely sure that nothing was remapping the HomeDrive.</description>
+    </item>
+    
+    <item>
       <title>Dot-Sourcing in PowerShell</title>
       <link>https://hurst.systems/posts/powershell-dot-sourcing/</link>
       <pubDate>Tue, 20 Nov 2018 14:53:23 -0500</pubDate>
@@ -38,10 +48,9 @@ Scripts and functions should do one &amp;ldquo;thing.&amp;rdquo; (multiple VSCod
       <pubDate>Tue, 20 Nov 2018 14:53:23 -0500</pubDate>
       
       <guid>https://hurst.systems/posts/powershell-present-working-directory/understanding-present-working-directory-pwd/</guid>
-      <description>Understanding Present Working Directory $PWD VSCode VSCode sets the $PWD (&amp;ldquo;present working directory”) to the Workspace location
-PowerShell ISE / CLI For the PowerShell ISE or PowerShell CLI you can set the $PWD in multiple ways Edit the Shortcut “Start in:” location variable to your desired path
-Working with the $PWD within the Script Explain why you need this and what this is doing
-1 2 3  # Creates new Profile ps1  if (!</description>
+      <description>Understanding your location - ($pwd / Get-Location) $pwd is an automatic variable which contains PowerShell&amp;rsquo;s current location. $pwd, which stands for &amp;ldquo;print working directory&amp;rdquo;, and functions like the PowerShell command &amp;ldquo;Get-Location&amp;rdquo;.
+You may see me refer to $pwd as &amp;ldquo;Present Working Directory&amp;rdquo; because it also fits the abbreviation and it was always easier for me to remember its function.
+VSCode VSCode sets the $pwd (&amp;ldquo;present working directory”) to the current Workspace location</description>
     </item>
     
     <item>

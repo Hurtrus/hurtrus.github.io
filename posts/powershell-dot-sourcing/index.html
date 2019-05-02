@@ -23,7 +23,7 @@ body, body.pushable {
 	<meta name="author" content="Scott Hurst" />
 	<meta name="description" content="Dot Sourcing in PowerShell Introduction When writing PowerShell scripts, the best practice is to keep your scripts as simple as possible.
 Scripts and functions should do one &amp;ldquo;thing.&amp;rdquo; (multiple VSCode windows?) This helps with troubleshooting since the function is small and does just one thing, and allows for any enhancements to the function we create in the future to be automatically available to every script in which we have used that function." />
-<meta name="generator" content="Hugo 0.51" />
+<meta name="generator" content="Hugo 0.53" />
 
 <link rel="shortcut icon" href="/img/favicon.ico">
 
@@ -88,13 +88,15 @@ var bodyBgSwitchIndex = 0;
 
 	<a class="ui label green " href="/tags/blog" title="blog">blog</a>
 
-	<a class="ui label teal " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
+	<a class="ui label brown " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
 
-	<a class="ui label teal " href="/tags/powershell" title="powershell">powershell</a>
+	<a class="ui label yellow " href="/tags/powershell" title="powershell">powershell</a>
 
-	<a class="ui label pink " href="/tags/pwd" title="pwd">pwd</a>
+	<a class="ui label teal " href="/tags/pwd" title="pwd">pwd</a>
 
-	<a class="ui label teal " href="/tags/twitter" title="twitter">twitter</a>
+	<a class="ui label pink " href="/tags/troubleshooting" title="troubleshooting">troubleshooting</a>
+
+	<a class="ui label olive " href="/tags/twitter" title="twitter">twitter</a>
 
 </section>
 	<section class="ui attached inverted segment sidebar-dream-categories both flexbox">
@@ -109,6 +111,13 @@ var bodyBgSwitchIndex = 0;
 		<div>
 			<i class="cocktail icon"></i>
 			<p>PowerShell - Error Handling</p>
+		</div>
+	</a>
+
+	<a class="item" href="https://hurst.systems/posts/troubleshooting-user-homedrive-auto-remapping-issue/troubleshooting-user-homedrive-auto-remapping-issue/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>TroubleShooting a Users HomeDrive Auto-Remapping</p>
 		</div>
 	</a>
 
@@ -175,7 +184,7 @@ var bodyBgSwitchIndex = 0;
 	
 	<section id="footer" class="ui bottom attached center aligned inverted segment">
 
-<p>© 2018 Hurst Systems</p>
+<p>© 2019 Hurst Systems</p>
 
 
 
@@ -243,15 +252,17 @@ var bodyBgSwitchIndex = 0;
 			</div></div>
 		<div id="tag-category" class=" content"><section class="ui attached center aligned inverted segment dream-tags none flexbox">
 
-	<a class="ui label purple " href="/tags/blog" title="blog">blog</a>
+	<a class="ui label green " href="/tags/blog" title="blog">blog</a>
 
-	<a class="ui label olive " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
+	<a class="ui label pink " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
 
 	<a class="ui label blue " href="/tags/powershell" title="powershell">powershell</a>
 
-	<a class="ui label orange " href="/tags/pwd" title="pwd">pwd</a>
+	<a class="ui label violet " href="/tags/pwd" title="pwd">pwd</a>
 
-	<a class="ui label purple " href="/tags/twitter" title="twitter">twitter</a>
+	<a class="ui label green " href="/tags/troubleshooting" title="troubleshooting">troubleshooting</a>
+
+	<a class="ui label green " href="/tags/twitter" title="twitter">twitter</a>
 
 </section><section class="ui attached inverted segment dream-categories both flexbox">
 				<div class="inverted accordion">
@@ -265,6 +276,13 @@ var bodyBgSwitchIndex = 0;
 		<div>
 			<i class="cocktail icon"></i>
 			<p>PowerShell - Error Handling</p>
+		</div>
+	</a>
+
+	<a class="item" href="https://hurst.systems/posts/troubleshooting-user-homedrive-auto-remapping-issue/troubleshooting-user-homedrive-auto-remapping-issue/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>TroubleShooting a Users HomeDrive Auto-Remapping</p>
 		</div>
 	</a>
 
@@ -330,7 +348,7 @@ var bodyBgSwitchIndex = 0;
 			</section></div>
 		<footer class="ui bottom attached center aligned inverted segment">
 
-<p>© 2018 Hurst Systems</p>
+<p>© 2019 Hurst Systems</p>
 
 
 
@@ -385,14 +403,14 @@ var bodyBgSwitchIndex = 0;
 
 <h2 id="present-working-directory-pwd">“Present Working Directory”: $PWD&nbsp;<a class="anchor" href="#present-working-directory-pwd"><i class="small linkify icon"></i></a> </h2>
 
-<p>This is seen as the PS C:\PowerShell&gt; in the terminal window
+<p>This is seen as the PS <strong>C:\PowerShell&gt;</strong> in the terminal window
 If you are using Relative Paths, and things are failing, normally it is due to the $PWD, as we will see a bit later in this demonstration.</p>
 
 <h2 id="the-all-important-paths">The all-important Paths&nbsp;<a class="anchor" href="#the-all-important-paths"><i class="small linkify icon"></i></a> </h2>
 
 <p>2 different types of Paths
-Relative: This is relative to the present working directory
-Absolute: This is the exact path to the file</p>
+-   <strong>Relative:</strong> Relative to the present working directory
+-   <strong>Absolute:</strong> This is the exact path to the file</p>
 
 <h2 id="the-dot-in-dot-sourcing">The Dot in dot-sourcing&nbsp;<a class="anchor" href="#the-dot-in-dot-sourcing"><i class="small linkify icon"></i></a> </h2>
 
@@ -405,7 +423,7 @@ Show the (dot) in front of the path</p>
 <pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">.\</span><span class="n">ScriptName</span><span class="p">.</span><span class="n">ps1</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"> <span class="p">.\</span><span class="n">ScriptName</span><span class="p">.</span><span class="n">ps1</span></code></pre></td></tr></table>
 </div>
 </div>
 <p>This creates a child scope for the script, and variables and functions defined in the script are not added to the current scope. Once the script completes any objects create are discarded, for example any variables created.</p>
@@ -417,12 +435,12 @@ dot source the script which will run in the current scope which means any variab
 
 <h2 id="we-re-all-here-for-the-execution">We’re all here for the execution&nbsp;<a class="anchor" href="#we-re-all-here-for-the-execution"><i class="small linkify icon"></i></a> </h2>
 
+<p><em>Failure</em>
+If the folder containing the files moves to another location, obviously this will change its absolute path.
+Show how it fails for Absolute Path works for relative paths.  Fix the Absolute Path, execute again</p>
+
 <p><em>Successful</em>
 Now let’s put our Absolute Path and our Relative Path scripts to work</p>
-
-<p><em>Failure</em>
-Move the folder
-Show how it fails for Absolute Path works for relative paths.  Fix the Absolute Path, execute again</p>
 
 <h2 id="take-away">Take away:&nbsp;<a class="anchor" href="#take-away"><i class="small linkify icon"></i></a> </h2>
 
@@ -438,13 +456,15 @@ Show how it fails for Absolute Path works for relative paths.  Fix the Absolute 
 
 	<a class="ui label olive " href="/tags/blog" title="blog">blog</a>
 
-	<a class="ui label pink " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
+	<a class="ui label orange " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
 
-	<a class="ui label brown " href="/tags/powershell" title="powershell">powershell</a>
+	<a class="ui label orange " href="/tags/powershell" title="powershell">powershell</a>
 
-	<a class="ui label violet " href="/tags/pwd" title="pwd">pwd</a>
+	<a class="ui label pink " href="/tags/pwd" title="pwd">pwd</a>
 
-	<a class="ui label blue " href="/tags/twitter" title="twitter">twitter</a>
+	<a class="ui label violet " href="/tags/troubleshooting" title="troubleshooting">troubleshooting</a>
+
+	<a class="ui label red " href="/tags/twitter" title="twitter">twitter</a>
 
 
 		</section><section class="ui secondary  attached segment share row box"><div class="author">

@@ -21,11 +21,10 @@ body, body.pushable {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="author" content="Scott Hurst" />
-	<meta name="description" content="Understanding Present Working Directory $PWD VSCode VSCode sets the $PWD (&amp;ldquo;present working directory”) to the Workspace location
-PowerShell ISE / CLI For the PowerShell ISE or PowerShell CLI you can set the $PWD in multiple ways Edit the Shortcut “Start in:” location variable to your desired path
-Working with the $PWD within the Script Explain why you need this and what this is doing
-1 2 3  # Creates new Profile ps1  if (!" />
-<meta name="generator" content="Hugo 0.51" />
+	<meta name="description" content="Understanding your location - ($pwd / Get-Location) $pwd is an automatic variable which contains PowerShell&amp;rsquo;s current location. $pwd, which stands for &amp;ldquo;print working directory&amp;rdquo;, and functions like the PowerShell command &amp;ldquo;Get-Location&amp;rdquo;.
+You may see me refer to $pwd as &amp;ldquo;Present Working Directory&amp;rdquo; because it also fits the abbreviation and it was always easier for me to remember its function.
+VSCode VSCode sets the $pwd (&amp;ldquo;present working directory”) to the current Workspace location" />
+<meta name="generator" content="Hugo 0.53" />
 
 <link rel="shortcut icon" href="/img/favicon.ico">
 
@@ -88,15 +87,17 @@ var bodyBgSwitchIndex = 0;
 </h3>
 </section><section class="ui attached center aligned inverted segment sidebar-dream-tags">
 
-	<a class="ui label pink " href="/tags/blog" title="blog">blog</a>
+	<a class="ui label violet " href="/tags/blog" title="blog">blog</a>
 
-	<a class="ui label pink " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
+	<a class="ui label orange " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
 
-	<a class="ui label blue " href="/tags/powershell" title="powershell">powershell</a>
+	<a class="ui label olive " href="/tags/powershell" title="powershell">powershell</a>
 
-	<a class="ui label olive " href="/tags/pwd" title="pwd">pwd</a>
+	<a class="ui label red " href="/tags/pwd" title="pwd">pwd</a>
 
-	<a class="ui label violet " href="/tags/twitter" title="twitter">twitter</a>
+	<a class="ui label teal " href="/tags/troubleshooting" title="troubleshooting">troubleshooting</a>
+
+	<a class="ui label yellow " href="/tags/twitter" title="twitter">twitter</a>
 
 </section>
 	<section class="ui attached inverted segment sidebar-dream-categories both flexbox">
@@ -111,6 +112,13 @@ var bodyBgSwitchIndex = 0;
 		<div>
 			<i class="cocktail icon"></i>
 			<p>PowerShell - Error Handling</p>
+		</div>
+	</a>
+
+	<a class="item" href="https://hurst.systems/posts/troubleshooting-user-homedrive-auto-remapping-issue/troubleshooting-user-homedrive-auto-remapping-issue/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>TroubleShooting a Users HomeDrive Auto-Remapping</p>
 		</div>
 	</a>
 
@@ -177,7 +185,7 @@ var bodyBgSwitchIndex = 0;
 	
 	<section id="footer" class="ui bottom attached center aligned inverted segment">
 
-<p>© 2018 Hurst Systems</p>
+<p>© 2019 Hurst Systems</p>
 
 
 
@@ -245,15 +253,17 @@ var bodyBgSwitchIndex = 0;
 			</div></div>
 		<div id="tag-category" class=" content"><section class="ui attached center aligned inverted segment dream-tags none flexbox">
 
-	<a class="ui label green " href="/tags/blog" title="blog">blog</a>
+	<a class="ui label red " href="/tags/blog" title="blog">blog</a>
 
-	<a class="ui label orange " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
+	<a class="ui label brown " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
 
-	<a class="ui label green " href="/tags/powershell" title="powershell">powershell</a>
+	<a class="ui label olive " href="/tags/powershell" title="powershell">powershell</a>
 
-	<a class="ui label teal " href="/tags/pwd" title="pwd">pwd</a>
+	<a class="ui label yellow " href="/tags/pwd" title="pwd">pwd</a>
 
-	<a class="ui label violet " href="/tags/twitter" title="twitter">twitter</a>
+	<a class="ui label brown " href="/tags/troubleshooting" title="troubleshooting">troubleshooting</a>
+
+	<a class="ui label teal " href="/tags/twitter" title="twitter">twitter</a>
 
 </section><section class="ui attached inverted segment dream-categories both flexbox">
 				<div class="inverted accordion">
@@ -267,6 +277,13 @@ var bodyBgSwitchIndex = 0;
 		<div>
 			<i class="cocktail icon"></i>
 			<p>PowerShell - Error Handling</p>
+		</div>
+	</a>
+
+	<a class="item" href="https://hurst.systems/posts/troubleshooting-user-homedrive-auto-remapping-issue/troubleshooting-user-homedrive-auto-remapping-issue/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>TroubleShooting a Users HomeDrive Auto-Remapping</p>
 		</div>
 	</a>
 
@@ -332,7 +349,7 @@ var bodyBgSwitchIndex = 0;
 			</section></div>
 		<footer class="ui bottom attached center aligned inverted segment">
 
-<p>© 2018 Hurst Systems</p>
+<p>© 2019 Hurst Systems</p>
 
 
 
@@ -352,11 +369,11 @@ var bodyBgSwitchIndex = 0;
 			</div>
 			<hr><div class="toc"><nav id="TableOfContents">
 <ul>
-<li><a href="#understanding-present-working-directory-pwd">Understanding Present Working Directory $PWD</a>
+<li><a href="#understanding-your-location-pwd-get-location">Understanding your location - ($pwd / Get-Location)</a>
 <ul>
 <li><a href="#vscode">VSCode</a></li>
 <li><a href="#powershell-ise-cli">PowerShell ISE / CLI</a></li>
-<li><a href="#working-with-the-pwd-within-the-script">Working with the $PWD within the Script</a></li>
+<li><a href="#working-with-the-pwd-within-the-script">Working with the $pwd within the Script</a></li>
 <li><a href="#setting-pwd-in-the-profile">Setting $PWD in the $Profile</a>
 <ul>
 <li><a href="#additional-reading">Additional Reading</a></li>
@@ -368,41 +385,24 @@ var bodyBgSwitchIndex = 0;
 			<article class="post-content twemoji">
 				
 
-<h1 id="understanding-present-working-directory-pwd">Understanding Present Working Directory $PWD&nbsp;<a class="anchor" href="#understanding-present-working-directory-pwd"><i class="small linkify icon"></i></a> </h1>
+<h1 id="understanding-your-location-pwd-get-location">Understanding your location - ($pwd / Get-Location)&nbsp;<a class="anchor" href="#understanding-your-location-pwd-get-location"><i class="small linkify icon"></i></a> </h1>
+
+<p>$pwd is an automatic variable which contains PowerShell&rsquo;s current location. $pwd, which stands for &ldquo;print working directory&rdquo;, and functions like the PowerShell command &ldquo;<a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-location">Get-Location</a>&rdquo;.</p>
+
+<p>You may see me refer to $pwd as &ldquo;Present Working Directory&rdquo; because it also fits the abbreviation and it was always easier for me to remember its function.</p>
 
 <h2 id="vscode">VSCode&nbsp;<a class="anchor" href="#vscode"><i class="small linkify icon"></i></a> </h2>
 
-<p>VSCode sets the $PWD (&ldquo;present working directory”) to the Workspace location</p>
+<p>VSCode sets the $pwd (&ldquo;present working directory”) to the current Workspace location</p>
 
 <h2 id="powershell-ise-cli">PowerShell ISE / CLI&nbsp;<a class="anchor" href="#powershell-ise-cli"><i class="small linkify icon"></i></a> </h2>
 
-<p>For the PowerShell ISE or PowerShell CLI you can set the $PWD in multiple ways
-Edit the Shortcut “<strong>Start in:</strong>” location variable to your desired path</p>
+<p>For the PowerShell ISE or PowerShell CLI the $pwd is set by the shortcut properties “<strong>Start in:</strong>”. &ldquo;%HOMEDRIVE%%HOMEPATH%&rdquo;</p>
 
-<h2 id="working-with-the-pwd-within-the-script">Working with the $PWD within the Script&nbsp;<a class="anchor" href="#working-with-the-pwd-within-the-script"><i class="small linkify icon"></i></a> </h2>
+<h2 id="working-with-the-pwd-within-the-script">Working with the $pwd within the Script&nbsp;<a class="anchor" href="#working-with-the-pwd-within-the-script"><i class="small linkify icon"></i></a> </h2>
 
-<p>Explain why you need this and what this is doing</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="c"># Creates new Profile ps1 </span>
-<span class="k">if</span> <span class="p">(!(</span><span class="nb">Test-Path</span> <span class="n">-Path</span> <span class="nv">$PROFILE</span> <span class="p">))</span>
-<span class="p">{</span> <span class="nb">New-Item</span> <span class="n">-Type</span> <span class="n">File</span> <span class="n">-Path</span> <span class="nv">$PROFILE</span> <span class="n">-Force</span> <span class="p">}</span></code></pre></td></tr></table>
-</div>
-</div>
-<p>Then explain how to use it using additional code</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">COde</span> <span class="n">that</span> <span class="n">calls</span> <span class="n">the</span> <span class="n">other</span> <span class="n">paths</span> <span class="n">or</span> <span class="n">somethign</span></code></pre></td></tr></table>
-</div>
-</div>
+<p>Just because you have the working directory set when you write the code, does not mean that the working directory will be the same when you execute the code.</p>
+
 <h2 id="setting-pwd-in-the-profile">Setting $PWD in the $Profile&nbsp;<a class="anchor" href="#setting-pwd-in-the-profile"><i class="small linkify icon"></i></a> </h2>
 
 <p>Or you can edit your profile to include a “*Set-Location*” command
@@ -427,15 +427,17 @@ put in a side note here about the different profiles, and what they do</p>
 		</section>
 		<section class="ui secondary attached segment dream-tags">
 
-	<a class="ui label olive " href="/tags/blog" title="blog">blog</a>
+	<a class="ui label orange " href="/tags/blog" title="blog">blog</a>
 
-	<a class="ui label brown " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
+	<a class="ui label red " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
 
-	<a class="ui label yellow " href="/tags/powershell" title="powershell">powershell</a>
+	<a class="ui label red " href="/tags/powershell" title="powershell">powershell</a>
 
 	<a class="ui label purple " href="/tags/pwd" title="pwd">pwd</a>
 
-	<a class="ui label green " href="/tags/twitter" title="twitter">twitter</a>
+	<a class="ui label olive " href="/tags/troubleshooting" title="troubleshooting">troubleshooting</a>
+
+	<a class="ui label blue " href="/tags/twitter" title="twitter">twitter</a>
 
 
 		</section><section class="ui secondary  attached segment share row box"><div class="author">
