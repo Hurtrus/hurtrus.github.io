@@ -85,17 +85,17 @@ var bodyBgSwitchIndex = 0;
 </h3>
 </section><section class="ui attached center aligned inverted segment sidebar-dream-tags">
 
-	<a class="ui label purple " href="/tags/blog" title="blog">blog</a>
+	<a class="ui label teal " href="/tags/blog" title="blog">blog</a>
 
-	<a class="ui label brown " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
+	<a class="ui label red " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
 
 	<a class="ui label orange " href="/tags/powershell" title="powershell">powershell</a>
 
-	<a class="ui label teal " href="/tags/pwd" title="pwd">pwd</a>
+	<a class="ui label pink " href="/tags/pwd" title="pwd">pwd</a>
 
-	<a class="ui label red " href="/tags/troubleshooting" title="troubleshooting">troubleshooting</a>
+	<a class="ui label orange " href="/tags/troubleshooting" title="troubleshooting">troubleshooting</a>
 
-	<a class="ui label orange " href="/tags/twitter" title="twitter">twitter</a>
+	<a class="ui label pink " href="/tags/twitter" title="twitter">twitter</a>
 
 </section>
 	<section class="ui attached inverted segment sidebar-dream-categories both flexbox">
@@ -178,6 +178,21 @@ var bodyBgSwitchIndex = 0;
 
 </div>
 
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/troubleshooting">troubleshooting</a>
+</div>
+<div class="content">
+
+	<a class="item" href="https://hurst.systems/posts/troubleshooting-homedrive-remapping/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>TroubleShooting a Users HomeDrive Auto-Remapping</p>
+		</div>
+	</a>
+
+</div>
+
 </div>
 	</section>
 	
@@ -251,17 +266,17 @@ var bodyBgSwitchIndex = 0;
 			</div></div>
 		<div id="tag-category" class=" content"><section class="ui attached center aligned inverted segment dream-tags none flexbox">
 
-	<a class="ui label violet " href="/tags/blog" title="blog">blog</a>
+	<a class="ui label purple " href="/tags/blog" title="blog">blog</a>
 
-	<a class="ui label green " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
+	<a class="ui label orange " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
 
-	<a class="ui label violet " href="/tags/powershell" title="powershell">powershell</a>
+	<a class="ui label pink " href="/tags/powershell" title="powershell">powershell</a>
 
 	<a class="ui label brown " href="/tags/pwd" title="pwd">pwd</a>
 
-	<a class="ui label pink " href="/tags/troubleshooting" title="troubleshooting">troubleshooting</a>
+	<a class="ui label violet " href="/tags/troubleshooting" title="troubleshooting">troubleshooting</a>
 
-	<a class="ui label pink " href="/tags/twitter" title="twitter">twitter</a>
+	<a class="ui label teal " href="/tags/twitter" title="twitter">twitter</a>
 
 </section><section class="ui attached inverted segment dream-categories both flexbox">
 				<div class="inverted accordion">
@@ -338,6 +353,21 @@ var bodyBgSwitchIndex = 0;
 		<div>
 			<i class="cocktail icon"></i>
 			<p>The Adventure Begins</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/troubleshooting">troubleshooting</a>
+</div>
+<div class="content">
+
+	<a class="item" href="https://hurst.systems/posts/troubleshooting-homedrive-remapping/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>TroubleShooting a Users HomeDrive Auto-Remapping</p>
 		</div>
 	</a>
 
@@ -440,7 +470,7 @@ GPO would have produced a consistent and widespread experience across the user b
 
 <h2 id="root-cause-analysis">Root Cause Analysis&nbsp;<a class="anchor" href="#root-cause-analysis"><i class="small linkify icon"></i></a> </h2>
 
-<p>A change to the &lsquo;New User Creation&rsquo; script</p>
+<p>A change to the &lsquo;New User Creation&rsquo; script inadvertently removed the ( : ) colon where the drive letter was assigned. All users that were created with &lsquo;Cincinnati&rsquo; as their City were created with the invalid &lsquo;HomeDrive&rsquo; property setting.</p>
 
 <h2 id="final-conclusion">Final Conclusion:&nbsp;<a class="anchor" href="#final-conclusion"><i class="small linkify icon"></i></a> </h2>
 
@@ -455,7 +485,7 @@ GPO would have produced a consistent and widespread experience across the user b
 <pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Get-ADUser</span> <span class="n">-Filter</span> <span class="p">{</span><span class="n">Homedrive</span> <span class="o">-eq</span> <span class="s1">&#39;N&#39;</span><span class="p">}</span> <span class="n">-Properties</span> <span class="n">Homedrive</span>  </code></pre></td></tr></table>
 </div>
 </div>
-<p>revealed ~160 other users that also had this issue associated with their account. No idea why none of these others had not reported problems.</p>
+<p>This output revealed ~160 other users that also had this issue associated with their account. No idea why none of these others had not reported problems.</p>
 
 <p>Since ‘N’ was an invalid drive setting, windows defaulted to using the last available drive letter and assigned that as the HomeDrive.</p>
 
@@ -474,7 +504,7 @@ GPO would have produced a consistent and widespread experience across the user b
 <td class="lntd">
 <pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="k">if</span> <span class="p">(</span><span class="nv">$LocationCombo</span><span class="p">.</span><span class="n">SelectedItem</span> <span class="o">-like</span> <span class="s2">&#34; Cincinnati*&#34;</span><span class="p">)</span> 
 <span class="p">{</span> 
-    <span class="nv">$CommandOutput</span> <span class="p">+=</span> <span class="s2">&#34; -HomeDrive &#34;&#34;N&#34;&#34; -HomeDirectory &#34;&#34;\\DFSRoot\Reds\usersOH\</span><span class="p">$(</span><span class="nv">$Usernamebox</span><span class="p">.</span><span class="n">Text</span><span class="p">)</span><span class="s2">&#34;&#34;&#34;</span>
+    <span class="nv">$CommandOutput</span> <span class="p">+=</span> <span class="s2">&#34; -HomeDrive &#34;&#34;N&#34;&#34; -HomeDirectory &#34;&#34;\\DFSRoot\BaseBall\FansInOH\</span><span class="p">$(</span><span class="nv">$Usernamebox</span><span class="p">.</span><span class="n">Text</span><span class="p">)</span><span class="s2">&#34;&#34;&#34;</span>
 <span class="p">}</span></code></pre></td></tr></table>
 </div>
 </div>
@@ -489,7 +519,7 @@ GPO would have produced a consistent and widespread experience across the user b
 <td class="lntd">
 <pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="k">if</span> <span class="p">(</span><span class="nv">$LocationCombo</span><span class="p">.</span><span class="n">SelectedItem</span> <span class="o">-like</span> <span class="s2">&#34; Cincinnati*&#34;</span><span class="p">)</span> 
 <span class="p">{</span> 
-    <span class="nv">$CommandOutput</span> <span class="p">+=</span> <span class="s2">&#34; -HomeDrive &#34;&#34;N:&#34;&#34; -HomeDirectory &#34;&#34;\\DFSRoot\Reds\usersOH\</span><span class="p">$(</span><span class="nv">$Usernamebox</span><span class="p">.</span><span class="n">Text</span><span class="p">)</span><span class="s2">&#34;&#34;&#34;</span>
+    <span class="nv">$CommandOutput</span> <span class="p">+=</span> <span class="s2">&#34; -HomeDrive &#34;&#34;N:&#34;&#34; -HomeDirectory &#34;&#34;\\DFSRoot\BaseBall\FansInOH\</span><span class="p">$(</span><span class="nv">$Usernamebox</span><span class="p">.</span><span class="n">Text</span><span class="p">)</span><span class="s2">&#34;&#34;&#34;</span>
 <span class="p">}</span></code></pre></td></tr></table>
 </div>
 </div>
@@ -560,15 +590,15 @@ GPO would have produced a consistent and widespread experience across the user b
 
 	<a class="ui label red " href="/tags/blog" title="blog">blog</a>
 
-	<a class="ui label red " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
+	<a class="ui label yellow " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
 
-	<a class="ui label teal " href="/tags/powershell" title="powershell">powershell</a>
+	<a class="ui label brown " href="/tags/powershell" title="powershell">powershell</a>
 
-	<a class="ui label red " href="/tags/pwd" title="pwd">pwd</a>
+	<a class="ui label green " href="/tags/pwd" title="pwd">pwd</a>
 
 	<a class="ui label brown " href="/tags/troubleshooting" title="troubleshooting">troubleshooting</a>
 
-	<a class="ui label blue " href="/tags/twitter" title="twitter">twitter</a>
+	<a class="ui label yellow " href="/tags/twitter" title="twitter">twitter</a>
 
 
 		</section><section class="ui secondary  attached segment share row box"><div class="author">
