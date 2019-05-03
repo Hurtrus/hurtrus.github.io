@@ -85,17 +85,17 @@ var bodyBgSwitchIndex = 0;
 </h3>
 </section><section class="ui attached center aligned inverted segment sidebar-dream-tags">
 
-	<a class="ui label yellow " href="/tags/blog" title="blog">blog</a>
+	<a class="ui label blue " href="/tags/blog" title="blog">blog</a>
 
-	<a class="ui label olive " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
+	<a class="ui label yellow " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
 
-	<a class="ui label blue " href="/tags/powershell" title="powershell">powershell</a>
+	<a class="ui label red " href="/tags/powershell" title="powershell">powershell</a>
 
-	<a class="ui label green " href="/tags/pwd" title="pwd">pwd</a>
+	<a class="ui label orange " href="/tags/pwd" title="pwd">pwd</a>
 
-	<a class="ui label blue " href="/tags/troubleshooting" title="troubleshooting">troubleshooting</a>
+	<a class="ui label pink " href="/tags/troubleshooting" title="troubleshooting">troubleshooting</a>
 
-	<a class="ui label olive " href="/tags/twitter" title="twitter">twitter</a>
+	<a class="ui label blue " href="/tags/twitter" title="twitter">twitter</a>
 
 </section>
 	<section class="ui attached inverted segment sidebar-dream-categories both flexbox">
@@ -266,17 +266,17 @@ var bodyBgSwitchIndex = 0;
 			</div></div>
 		<div id="tag-category" class=" content"><section class="ui attached center aligned inverted segment dream-tags none flexbox">
 
-	<a class="ui label violet " href="/tags/blog" title="blog">blog</a>
+	<a class="ui label orange " href="/tags/blog" title="blog">blog</a>
 
 	<a class="ui label purple " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
 
-	<a class="ui label blue " href="/tags/powershell" title="powershell">powershell</a>
+	<a class="ui label pink " href="/tags/powershell" title="powershell">powershell</a>
 
-	<a class="ui label red " href="/tags/pwd" title="pwd">pwd</a>
+	<a class="ui label purple " href="/tags/pwd" title="pwd">pwd</a>
 
-	<a class="ui label red " href="/tags/troubleshooting" title="troubleshooting">troubleshooting</a>
+	<a class="ui label brown " href="/tags/troubleshooting" title="troubleshooting">troubleshooting</a>
 
-	<a class="ui label green " href="/tags/twitter" title="twitter">twitter</a>
+	<a class="ui label orange " href="/tags/twitter" title="twitter">twitter</a>
 
 </section><section class="ui attached inverted segment dream-categories both flexbox">
 				<div class="inverted accordion">
@@ -405,8 +405,7 @@ var bodyBgSwitchIndex = 0;
 <li><a href="#initial-conclusion">Initial Conclusion:</a></li>
 <li><a href="#next-steps">Next Steps:</a></li>
 <li><a href="#root-cause-analysis">Root Cause Analysis</a></li>
-<li><a href="#final-conclusion">Final Conclusion:</a></li>
-<li><a href="#root-cause-analysis-1">Root Cause Analysis</a>
+<li><a href="#final-conclusion">Final Conclusion:</a>
 <ul>
 <li><a href="#example-of-the-error-in-the-code">Example of the error in the code:</a></li>
 <li><a href="#correction-of-the-error-in-the-code">Correction of the error in the code:</a></li>
@@ -417,6 +416,7 @@ var bodyBgSwitchIndex = 0;
 <li><a href="#correct-users-effected-by-this-issue">Correct users effected by this issue</a></li>
 <li><a href="#check-an-individual-user">Check an individual user</a></li>
 </ul></li>
+<li><a href="#tl-dr">TL;DR:</a></li>
 </ul></li>
 </ul>
 </nav></div>
@@ -479,7 +479,7 @@ GPO would have produced a consistent and widespread experience across the user b
 
 <h2 id="root-cause-analysis">Root Cause Analysis&nbsp;<a class="anchor" href="#root-cause-analysis"><i class="small linkify icon"></i></a> </h2>
 
-<p>A change to the &lsquo;New User Creation&rsquo; script inadvertently removed the ( : ) colon where the drive letter was assigned. All users that were created with &lsquo;Cincinnati&rsquo; as their City were created with the invalid &lsquo;HomeDrive&rsquo; property setting.</p>
+<p>A change to the &lsquo;New User Creation&rsquo; script inadvertently removed the ( : ) colon where the drive letter was assigned. Examination of the code uncovered that if the Location drop down was set to  Cincinnati the -HomeDrive property was set to be ‘N’ &hellip;without the colon, where as the code to set other locations were properly being set as ‘N:’</p>
 
 <h2 id="final-conclusion">Final Conclusion:&nbsp;<a class="anchor" href="#final-conclusion"><i class="small linkify icon"></i></a> </h2>
 
@@ -497,10 +497,6 @@ GPO would have produced a consistent and widespread experience across the user b
 <p>This output revealed ~160 other users that also had this issue associated with their account. No idea why none of these others had not reported problems.</p>
 
 <p>Since ‘N’ was an invalid drive setting, windows defaulted to using the last available drive letter and assigned that as the HomeDrive.</p>
-
-<h2 id="root-cause-analysis-1">Root Cause Analysis&nbsp;<a class="anchor" href="#root-cause-analysis-1"><i class="small linkify icon"></i></a> </h2>
-
-<p>A change to the &lsquo;New User Creation&rsquo; script had inadvertently removed the colon at the end of the drive letter. Examination of the code uncovered that if the Location drop down was set to  Cincinnati the -HomeDrive property was set to be ‘N’ &hellip;without the colon, where as the code to set other locations were properly being set as ‘N:’</p>
 
 <h3 id="example-of-the-error-in-the-code">Example of the error in the code:&nbsp;<a class="anchor" href="#example-of-the-error-in-the-code"><i class="small linkify icon"></i></a> </h3>
 <div class="highlight"><div class="chroma">
@@ -586,8 +582,9 @@ GPO would have produced a consistent and widespread experience across the user b
 </div>
 <p><br><br></p>
 
-<p>## TL;DR:
- If you have a user whose HomeDrive mapping is changing to something other that what it should be set to within Active Directory, check that users AD Object, as it may have an invalid property setting.</p>
+<h2 id="tl-dr">TL;DR:&nbsp;<a class="anchor" href="#tl-dr"><i class="small linkify icon"></i></a> </h2>
+
+<p>If you have a user whose HomeDrive mapping is changing to something other that what it should be set to within Active Directory, check that users AD Object, as it may have an invalid property setting.</p>
 
 <p>Correct your new user creation scripts, users whose HomeDrive is set through the ADU&amp;C GUI users do not have this issue.</p>
 
@@ -597,17 +594,17 @@ GPO would have produced a consistent and widespread experience across the user b
 		</section>
 		<section class="ui secondary attached segment dream-tags">
 
-	<a class="ui label orange " href="/tags/blog" title="blog">blog</a>
+	<a class="ui label red " href="/tags/blog" title="blog">blog</a>
 
-	<a class="ui label blue " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
+	<a class="ui label purple " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
 
-	<a class="ui label pink " href="/tags/powershell" title="powershell">powershell</a>
+	<a class="ui label yellow " href="/tags/powershell" title="powershell">powershell</a>
 
-	<a class="ui label teal " href="/tags/pwd" title="pwd">pwd</a>
+	<a class="ui label orange " href="/tags/pwd" title="pwd">pwd</a>
 
-	<a class="ui label olive " href="/tags/troubleshooting" title="troubleshooting">troubleshooting</a>
+	<a class="ui label red " href="/tags/troubleshooting" title="troubleshooting">troubleshooting</a>
 
-	<a class="ui label red " href="/tags/twitter" title="twitter">twitter</a>
+	<a class="ui label yellow " href="/tags/twitter" title="twitter">twitter</a>
 
 
 		</section><section class="ui secondary  attached segment share row box"><div class="author">
