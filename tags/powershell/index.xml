@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Powershell on Hurst Systems</title>
+    <link>https://hurst.systems/tags/powershell/</link>
+    <description>Recent content in Powershell on Hurst Systems</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 23 Oct 2018 10:29:23 -0500</lastBuildDate>
+    
+	<atom:link href="https://hurst.systems/tags/powershell/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PowerShell - Error Handling</title>
+      <link>https://hurst.systems/posts/powershell-error-handling/</link>
+      <pubDate>Tue, 23 Oct 2018 10:29:23 -0500</pubDate>
+      
+      <guid>https://hurst.systems/posts/powershell-error-handling/</guid>
+      <description>PowerShell - Error Handling Try Catch and Finally
+Try When we need to watch a block of our code for errors, our new best friend is the try statement. Ever dillagent, try knows the danger that looms and is looking out for you when a &amp;ldquo;terminating&amp;rdquo; error occurs.
+We can also tell try to be on the lookout for other types of errors, those errrors that don&amp;rsquo;t stop the function in its tracks (also known as Non-Terminating), but may cause problems later in our code because this function was unable to be successfully executed.</description>
+    </item>
+    
+    <item>
+      <title>TroubleShooting a Users HomeDrive Auto-Remapping</title>
+      <link>https://hurst.systems/posts/troubleshooting-homedrive-remapping/</link>
+      <pubDate>Wed, 17 Apr 2019 19:29:23 -0500</pubDate>
+      
+      <guid>https://hurst.systems/posts/troubleshooting-homedrive-remapping/</guid>
+      <description>Issue:  Four users report that their &amp;lsquo;HomeDrive&amp;rsquo; mapping is defaulting to Z:\ during login. Desktop Team reports that even after mapping and remapping the drive to N:\ within windows the drive reverts back to Z:\ Active Directory Users and Computers shows that the &amp;lsquo;HomeDrive&amp;rsquo; set to N:\ on the profile tab of the AD User Object Desktop Team suspects that a GPO is making changes to the drive mappings for these users.</description>
+    </item>
+    
+    <item>
+      <title>Dot-Sourcing in PowerShell</title>
+      <link>https://hurst.systems/posts/powershell-dot-sourcing/</link>
+      <pubDate>Tue, 20 Nov 2018 14:53:23 -0500</pubDate>
+      
+      <guid>https://hurst.systems/posts/powershell-dot-sourcing/</guid>
+      <description>Dot Sourcing in PowerShell Introduction When writing PowerShell scripts, the best practice is to keep your scripts as simple as possible.
+Scripts and functions should do one &amp;ldquo;thing.&amp;rdquo; (multiple VSCode windows?) This helps with troubleshooting since the function is small and does just one thing, and allows for any enhancements to the function we create in the future to be automatically available to every script in which we have used that function.</description>
+    </item>
+    
+    <item>
+      <title>Present Working Directory</title>
+      <link>https://hurst.systems/posts/powershell-present-working-directory/understanding-present-working-directory-pwd/</link>
+      <pubDate>Tue, 20 Nov 2018 14:53:23 -0500</pubDate>
+      
+      <guid>https://hurst.systems/posts/powershell-present-working-directory/understanding-present-working-directory-pwd/</guid>
+      <description>Understanding your location - ($pwd / Get-Location) $pwd is an automatic variable which contains PowerShell&amp;rsquo;s current location. $pwd, which stands for &amp;ldquo;print working directory&amp;rdquo;, and functions like the PowerShell command &amp;ldquo;Get-Location&amp;rdquo;.
+You may see me refer to $pwd as &amp;ldquo;Present Working Directory&amp;rdquo; because it also fits the abbreviation and it was always easier for me to remember its function.
+VSCode VSCode sets the $pwd (&amp;ldquo;present working directory”) to the current Workspace location</description>
+    </item>
+    
+    <item>
+      <title>Understanding Paths in PowerShell</title>
+      <link>https://hurst.systems/posts/powershell-understanding-paths/</link>
+      <pubDate>Tue, 20 Nov 2018 14:53:23 -0500</pubDate>
+      
+      <guid>https://hurst.systems/posts/powershell-understanding-paths/</guid>
+      <description>Understanding Paths in PowerShell Absolute and Relative Paths By default, the “present working directory” is not on the PATH by default. This means that you must use relative or absolute paths when specifying a script to run, or when sourcing one script from within another.
+The all-important Paths 2 different types of Paths Relative and Absolute
+Absolute Path: Like having the “Country, State, City, Street address, floor, room, toolbox, bottom shelf, right side” for directions to where the hammer is located.</description>
+    </item>
+    
+    <item>
+      <title>PowerShell - Adding WhatIf and Confirm</title>
+      <link>https://hurst.systems/posts/powershell-adding-whatif-and-confirm/</link>
+      <pubDate>Thu, 23 Aug 2018 10:29:23 -0500</pubDate>
+      
+      <guid>https://hurst.systems/posts/powershell-adding-whatif-and-confirm/</guid>
+      <description>So I planned to write a blog post about how to add WhatIf and Confirm to your PowerShell code and began to do research on the topic. I found that a bunch of awesome blogs that already had covered this topic, so I grabbed some information about each and threw it into this post. I will clean this up and make it more readable at a later time, just wanted to get this into my site so that I could find it and use it when needed.</description>
+    </item>
+    
+    <item>
+      <title>PowerShell - Advanced Functions</title>
+      <link>https://hurst.systems/posts/powershell-advanced-functions/</link>
+      <pubDate>Fri, 03 Aug 2018 10:29:23 -0500</pubDate>
+      
+      <guid>https://hurst.systems/posts/powershell-advanced-functions/</guid>
+      <description>Advanced Functions when giving a default parameter use
+1 2 3 4 5 6 7  [ValidateNotNullOrEmpty()] [CmdletBinding()] param ( [ValidateNotNullOrEmpty()] [string[] ] $Computername = $env:COMPUTERNAME )   Standard and Advanced Functions
+PowerShell Advanced Functions: Can we build them better? With parameter validation, yes we can!
+About Functions Advanced on PSCore
+About Functions Advanced Methods
+About Functions Advanced Parameters
+Which leads to learning how to use Plaster What is Plaster</description>
+    </item>
+    
+  </channel>
+</rss>

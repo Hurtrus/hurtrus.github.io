@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<title>
+	Understanding Paths in PowerShell
+</title><style>
+body {
+	display: block;
+	--colorBG: "#40e0d0, #ff8c00, #ff0080";
+		background-image: var(--bgImage) !important;
+	
+}
+
+body, body.pushable {
+	background-repeat: no-repeat;
+  	background-attachment: fixed;
+  	background-size: cover !important;
+}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="author" content="Scott Hurst" />
+	<meta name="description" content="Understanding Paths in PowerShell Absolute and Relative Paths By default, the “present working directory” is not on the PATH by default. This means that you must use relative or absolute paths when specifying a script to run, or when sourcing one script from within another.
+The all-important Paths 2 different types of Paths Relative and Absolute
+Absolute Path: Like having the “Country, State, City, Street address, floor, room, toolbox, bottom shelf, right side” for directions to where the hammer is located." />
+<meta name="generator" content="Hugo 0.53" />
+
+<link rel="shortcut icon" href="/img/favicon.ico">
+
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
+<style>
+body.pushable {
+	display: block;
+		background-image: var(--bgImage) !important;
+	 ;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="/css/site.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css">
+<script>
+	var colorBG =  null 
+	var enabledPost =  false 
+	var isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )
+	console.log("The client device is a "+(isMobile?"mobile":"PC")+".")
+</script>
+</head>
+<body><script>
+var prevBgIndex = 0;
+var bodyBgSwitchIndex = 0;
+		var bgImage = "url(" + "/img/postImages/pwsh.jpeg" + ")";
+	
+	console.log("Current background: " + bgImage.substring(bgImage.indexOf("bg"), bgImage.length));
+	document.body.style.setProperty('--blurEff', null );
+	document.body.style.setProperty('--bgImage', bgImage);
+
+	function getRandomInt(min, max) {
+	  min = Math.ceil(min);
+	  max = Math.floor(max);
+	  var random;
+	  while (1) {
+	    random = Math.floor(Math.random() * (max - min)) + min;
+	    if (random !== prevBgIndex) {
+	      prevBgIndex = random;
+	      break;
+	    }
+	  }
+	  return random;
+	}
+
+	function connect(arr) {
+	  var str = '';
+	  for (var i = 0; i < arr.length; i++) {
+	    if (i !== arr.length - 1) {
+	      str += arr[i] + ', ';
+	    } else {
+	      str += arr[i];
+	    }
+	  }
+	  return str;
+	}
+</script><div class="blur-overlay"></div><div id="sidebar" class="ui sidebar inverted vertical menu">
+	<section id="author" class="ui top attached center aligned inverted segment"><div class="ui small circular image">
+		<img src="/img/Profile/Scott_Hurst_Systems.png">
+</div>
+<h3 class="ui header">Scott Hurst
+	<div class="sub header">Server Engineer, PowerShell Enthusiast, Gamer.</div>
+</h3>
+</section><section class="ui attached center aligned inverted segment sidebar-dream-tags">
+
+	<a class="ui label brown " href="/tags/blog" title="blog">blog</a>
+
+	<a class="ui label green " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
+
+	<a class="ui label brown " href="/tags/powershell" title="powershell">powershell</a>
+
+	<a class="ui label purple " href="/tags/pwd" title="pwd">pwd</a>
+
+	<a class="ui label teal " href="/tags/troubleshooting" title="troubleshooting">troubleshooting</a>
+
+	<a class="ui label purple " href="/tags/twitter" title="twitter">twitter</a>
+
+</section>
+	<section class="ui attached inverted segment sidebar-dream-categories both flexbox">
+		<div class="ui inverted accordion">
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/powershell">powershell</a>
+</div>
+<div class="content">
+
+	<a class="item" href="https://hurst.systems/posts/powershell-error-handling/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>PowerShell - Error Handling</p>
+		</div>
+	</a>
+
+	<a class="item" href="https://hurst.systems/posts/troubleshooting-homedrive-remapping/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>TroubleShooting a Users HomeDrive Auto-Remapping</p>
+		</div>
+	</a>
+
+	<a class="item" href="https://hurst.systems/posts/powershell-dot-sourcing/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Dot-Sourcing in PowerShell</p>
+		</div>
+	</a>
+
+	<a class="item" href="https://hurst.systems/posts/powershell-present-working-directory/understanding-present-working-directory-pwd/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Present Working Directory</p>
+		</div>
+	</a>
+
+	<a class="item" href="https://hurst.systems/posts/powershell-understanding-paths/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Understanding Paths in PowerShell</p>
+		</div>
+	</a>
+
+	<a class="item" href="https://hurst.systems/posts/powershell-adding-whatif-and-confirm/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>PowerShell - Adding WhatIf and Confirm</p>
+		</div>
+	</a>
+
+	<a class="item" href="https://hurst.systems/posts/powershell-advanced-functions/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>PowerShell - Advanced Functions</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/troubleshooting">troubleshooting</a>
+</div>
+<div class="content">
+
+	<a class="item" href="https://hurst.systems/posts/troubleshooting-homedrive-remapping/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>TroubleShooting a Users HomeDrive Auto-Remapping</p>
+		</div>
+	</a>
+
+</div>
+
+</div>
+	</section>
+	
+	<section id="footer" class="ui bottom attached center aligned inverted segment">
+
+<p>© 2021 Hurst Systems</p>
+
+
+
+<p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> </p></section>
+</div>
+<div class="pusher">
+		<div class="flipper">
+			<div class="front">
+	
+	<nav class="ui top secondary menu bar">
+	<div class="item">
+		<i class="inverted big link bullseye icon dream-flip-toggle" title="About Me"></i>
+	</div>
+<div class="item">
+			<a href="/">
+				<i class="inverted big link home icon" title="Home"></i>
+			</a>
+		</div>
+	<div class="item">
+			<a href="/posts">
+				<i class="inverted big link archive icon" title="Archive"></i>
+			</a>
+		</div>
+	
+	<div class="item">
+			<a href="/tags">
+				<i class="inverted big link tags icon" title="All Tags"></i>
+			</a>
+		</div>
+	<div class="item">
+			<a href="/categories">
+				<i class="inverted big link cubes icon" title="All Categories"></i>
+			</a>
+    	</div>
+	
+	<div class="ui container tablet computer only grid">
+		<div class="item" onClick="$('.ui.sidebar').sidebar('setting', 'transition', 'overlay').sidebar('toggle');">
+			<i class="inverted big link sidebar icon" title="Show Sidebar"></i>
+		</div>
+	</div>
+	
+
+	
+	<div class="item right">
+		<a href="/posts/index.xml">
+			<i class="inverted big link rss icon" title="RSS Feed"></i>
+		</a>
+	</div>
+	
+</nav>
+
+
+<div class="ui centered grid">
+	<div class="sixteen wide mobile only column"><div class="ui inverted accordion">
+	<div id="header" class="ui inverted segment column box">
+		<header id="author" class="ui top attached center aligned inverted segment"><div class="ui small circular image">
+		<img src="/img/Profile/Scott_Hurst_Systems.png">
+</div>
+<h3 class="ui header">Scott Hurst
+	<div class="sub header">Server Engineer, PowerShell Enthusiast, Gamer.</div>
+</h3>
+</header>
+		<div class=" title header-title"><div id="tag-category-pop" class="ui red right corner label">
+				<i class="hand point icon down"title="Click this to pop tags and categories"></i>
+			</div></div>
+		<div id="tag-category" class=" content"><section class="ui attached center aligned inverted segment dream-tags none flexbox">
+
+	<a class="ui label brown " href="/tags/blog" title="blog">blog</a>
+
+	<a class="ui label olive " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
+
+	<a class="ui label brown " href="/tags/powershell" title="powershell">powershell</a>
+
+	<a class="ui label violet " href="/tags/pwd" title="pwd">pwd</a>
+
+	<a class="ui label olive " href="/tags/troubleshooting" title="troubleshooting">troubleshooting</a>
+
+	<a class="ui label olive " href="/tags/twitter" title="twitter">twitter</a>
+
+</section><section class="ui attached inverted segment dream-categories both flexbox">
+				<div class="inverted accordion">
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/powershell">powershell</a>
+</div>
+<div class="content">
+
+	<a class="item" href="https://hurst.systems/posts/powershell-error-handling/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>PowerShell - Error Handling</p>
+		</div>
+	</a>
+
+	<a class="item" href="https://hurst.systems/posts/troubleshooting-homedrive-remapping/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>TroubleShooting a Users HomeDrive Auto-Remapping</p>
+		</div>
+	</a>
+
+	<a class="item" href="https://hurst.systems/posts/powershell-dot-sourcing/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Dot-Sourcing in PowerShell</p>
+		</div>
+	</a>
+
+	<a class="item" href="https://hurst.systems/posts/powershell-present-working-directory/understanding-present-working-directory-pwd/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Present Working Directory</p>
+		</div>
+	</a>
+
+	<a class="item" href="https://hurst.systems/posts/powershell-understanding-paths/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Understanding Paths in PowerShell</p>
+		</div>
+	</a>
+
+	<a class="item" href="https://hurst.systems/posts/powershell-adding-whatif-and-confirm/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>PowerShell - Adding WhatIf and Confirm</p>
+		</div>
+	</a>
+
+	<a class="item" href="https://hurst.systems/posts/powershell-advanced-functions/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>PowerShell - Advanced Functions</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/troubleshooting">troubleshooting</a>
+</div>
+<div class="content">
+
+	<a class="item" href="https://hurst.systems/posts/troubleshooting-homedrive-remapping/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>TroubleShooting a Users HomeDrive Auto-Remapping</p>
+		</div>
+	</a>
+
+</div>
+
+</div>
+			</section></div>
+		<footer class="ui bottom attached center aligned inverted segment">
+
+<p>© 2021 Hurst Systems</p>
+
+
+
+<p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> </p></footer>
+	</div>
+</div>
+</div>
+	<div class="sixteen wide mobile fifteen wide tablet twelve wide computer column post-list">
+		<section class="ui secondary top attached black segment post-head">
+			<h1 class="post-title">
+				Understanding Paths in PowerShell
+			</h1>
+			<div class="sub header">
+					<div><span><i class="calendar outline icon"></i>Nov 20, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="https://hurst.systems/posts/powershell-understanding-paths/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="f0a3f2b24cb4b412bd9092f532f0838d"></a></span></div>
+					<div><span><i class="clock outline icon"></i>2 min read</span></div>
+					<div><span><i class="angle double up icon"></i>Last updated on Nov 20, 2018</span></div>
+			</div>
+			<hr><div class="toc"><nav id="TableOfContents">
+<ul>
+<li><a href="#understanding-paths-in-powershell">Understanding Paths in PowerShell</a>
+<ul>
+<li><a href="#absolute-and-relative-paths">Absolute and Relative Paths</a>
+<ul>
+<li><a href="#the-all-important-paths">The all-important Paths</a></li>
+</ul></li>
+<li><a href="#absolute-path">Absolute Path:</a></li>
+<li><a href="#relative-path">Relative Path:</a>
+<ul>
+<li><a href="#example-1">Example 1</a></li>
+<li><a href="#example-2">Example 2</a></li>
+<li><a href="#example-3">Example 3</a></li>
+</ul></li>
+<li><a href="#using-relative-paths">Using Relative Paths</a></li>
+</ul></li>
+</ul>
+</nav></div>
+			
+			<article class="post-content twemoji">
+				
+
+<h1 id="understanding-paths-in-powershell">Understanding Paths in PowerShell&nbsp;<a class="anchor" href="#understanding-paths-in-powershell"><i class="small linkify icon"></i></a> </h1>
+
+<h2 id="absolute-and-relative-paths">Absolute and Relative Paths&nbsp;<a class="anchor" href="#absolute-and-relative-paths"><i class="small linkify icon"></i></a> </h2>
+
+<p>By default, the “present working directory” is not on the PATH by default. This means that you must use relative or absolute paths when specifying a script to run, or when sourcing one script from within another.</p>
+
+<h3 id="the-all-important-paths">The all-important Paths&nbsp;<a class="anchor" href="#the-all-important-paths"><i class="small linkify icon"></i></a> </h3>
+
+<p>2 different types of Paths
+Relative and Absolute</p>
+
+<h2 id="absolute-path">Absolute Path:&nbsp;<a class="anchor" href="#absolute-path"><i class="small linkify icon"></i></a> </h2>
+
+<p>Like having the “Country, State, City, Street address, floor, room, toolbox, bottom shelf, right side” for directions to where the hammer is located. Which is fine, unless we carry our tool box to into another room, and then try to retrieve the hammer.
+Example
+    C:\PowerShell\ActiveDirectory\Test-ADAuthentication.ps1</p>
+
+<h2 id="relative-path">Relative Path:&nbsp;<a class="anchor" href="#relative-path"><i class="small linkify icon"></i></a> </h2>
+
+<p>A relative path is… relative to the $PWD &ldquo;present working directory&rdquo;
+Like a tool box where as long as the whole tool box is moved, the hammer is always “bottom shelf, right side”, screw driver is “top shelf center”</p>
+
+<h3 id="example-1">Example 1&nbsp;<a class="anchor" href="#example-1"><i class="small linkify icon"></i></a> </h3>
+
+<p>Same directory</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">.\</span><span class="nb">Get-FolderSize</span><span class="p">.</span><span class="n">ps1</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="example-2">Example 2&nbsp;<a class="anchor" href="#example-2"><i class="small linkify icon"></i></a> </h3>
+
+<p>Root directory</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">.\</span><span class="nb">Get-FolderSize</span><span class="p">.</span><span class="n">ps1</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="example-3">Example 3&nbsp;<a class="anchor" href="#example-3"><i class="small linkify icon"></i></a> </h3>
+
+<p>Different directory</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">.\</span><span class="n">Functions</span><span class="p">\</span><span class="nb">Get-RandomPassword</span><span class="p">.</span><span class="n">ps1</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="using-relative-paths">Using Relative Paths&nbsp;<a class="anchor" href="#using-relative-paths"><i class="small linkify icon"></i></a> </h2>
+
+<p>Using Relative Paths in dot-sourcing we have to consider how the script will be executed in relation to the $pwd. When we write it in the ISE and test by executing in the ISE with a $pwd like is currently set, with c:\PowerShell being the working directory, the ISE will help us complete the source path.
+What happens if we try to execute the script by changing directory to the source folder and (dot slash Execute) the script?
+Or if we dot-source the execution from a completely different folder?</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">cd</span> <span class="n">c</span><span class="err">:</span><span class="p">\</span><span class="n">temp</span>
+<span class="p">.</span> <span class="p">..\</span><span class="n">PowerShell</span><span class="p">\</span><span class="n">GenerateRandomPassword</span><span class="p">\</span><span class="n">PasstoFIle</span><span class="p">.</span><span class="n">ps1</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>To get around this, we could add this snippet to the script that sets the root directory to where the script is located regardless of the present working directory</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="c"># Creates new Profile ps1 </span>
+<span class="k">if</span> <span class="p">(!(</span><span class="nb">Test-Path</span> <span class="n">-Path</span> <span class="nv">$PROFILE</span> <span class="p">))</span>
+<span class="p">{</span> <span class="nb">New-Item</span> <span class="n">-Type</span> <span class="n">File</span> <span class="n">-Path</span> <span class="nv">$PROFILE</span> <span class="n">-Force</span> <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+			</article>
+		</section>
+		<section class="ui secondary attached segment dream-tags">
+
+	<a class="ui label orange " href="/tags/blog" title="blog">blog</a>
+
+	<a class="ui label pink " href="/tags/dot-sourcing" title="dot-sourcing">dot-sourcing</a>
+
+	<a class="ui label green " href="/tags/powershell" title="powershell">powershell</a>
+
+	<a class="ui label green " href="/tags/pwd" title="pwd">pwd</a>
+
+	<a class="ui label yellow " href="/tags/troubleshooting" title="troubleshooting">troubleshooting</a>
+
+	<a class="ui label teal " href="/tags/twitter" title="twitter">twitter</a>
+
+
+		</section><section class="ui secondary  attached segment share row box"><div class="author">
+	<img class="avatar" src="/img/Profile/Scott_Hurst_Systems.png">
+	
+</div>
+<div class="info grow flexbox"><a href="https://twitter.com/The_Scott_Hurst">
+	
+	<p class="name">Scott Hurst</p></a>
+	
+	<p class="desc">Server Engineer, PowerShell Enthusiast, Gamer.</p>
+</div>
+<section class="buttons row box">
+	<div class="facebook none flexbox" href="#" onclick="window.open(
+			'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+			'facebook-share-dialog',
+			'width=626,height=436'); return false;">
+		<button class="ui facebook button"><i class="facebook icon"></i>Share</button>
+	</div>
+	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;Understanding Paths in PowerShell &quot; by @The_Scott_Hurst https:\/\/hurst.systems\/posts\/powershell-understanding-paths\/','_self')">
+		<button class="ui twitter button"><i class="twitter icon"></i>Tweet</button>
+	</div>
+</section>
+</section>
+		<section class="ui secondary attached segment copyright">
+			
+
+		</section>
+		<div class="ui secondary bottom attached stacked segment disqus"><div id="disqus_thread"></div>
+<script>
+	var disqus_config = function () {
+		this.page.url = 'https:\/\/hurst.systems\/posts\/powershell-understanding-paths\/';
+		this.page.identifier = 'f0a3f2b24cb4b412bd9092f532f0838d';
+	};
+	(function() {
+   	var d = document, s = d.createElement('script');
+   	s.src = 'https://' + 'hurst-systems' + '.disqus.com/embed.js';
+   	s.setAttribute('data-timestamp', +new Date());
+   	(d.head || d.body).appendChild(s);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+		
+	</div>
+</div>
+
+			</div>
+			<div class="back">
+<nav class="ui top secondary menu bar">
+	<div class="item">
+		<i class="inverted big link bullseye icon dream-flip-toggle" title="About Me"></i>
+	</div>
+
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+	
+	
+	
+	
+		
+		
+		<div class="item">
+			<a href="https://github.com/Hurtrus" target="	_blank">
+				<i id="ico" class="inverted big link github icon" title="GitHub"></i>
+			</a>
+		</div>
+		
+	
+		
+		
+		<div class="item">
+			<a href="mailto:scott&#43;blogposts@hurst.systems" target="	_blank">
+				<i id="ico" class="inverted big link mail icon" title="Email"></i>
+			</a>
+		</div>
+		
+	
+		
+		
+		<div class="item">
+			<a href="https://twitter.com/The_Scott_Hurst" target="	_blank">
+				<i id="ico" class="inverted big link twitter icon" title="Twitter"></i>
+			</a>
+		</div>
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+		<div class="item">
+			<a href="https://www.linkedin.com/in/brandonhurst" target="	_blank">
+				<i id="ico" class="inverted big link linkedin icon" title="LinkedIn"></i>
+			</a>
+		</div>
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+
+	
+	<div class="item right">
+		<a href="/posts/index.xml">
+			<i class="inverted big link rss icon" title="RSS Feed"></i>
+		</a>
+	</div>
+	
+</nav>
+
+<div class="ui centered grid about">
+	<div class="sixteen wide mobile fifteen wide tablet fifteen wide computer column about">
+		<section class="ui stacked segments">
+			<div class="ui inverted segment">
+				<article class="twemoji"><h1>Just the typical about me page</h1>
+
+<hr />
+
+<p>Published videos
+    <p>List of videos I have created: <a href="https://www.techsnips.io/contributors/scott-hurst/" rel="noopener noreferrer" target="_blank">TechSnips</a><br></p></p>
+
+<p><iframe width="560" height="315" src="https://www.youtube.com/embed/gTzTeHmKMKw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br></p>
+
+<p><iframe width="560" height="315" src="https://www.youtube.com/embed/4UQsSdsc2ag" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br></p>
+
+<p><iframe width="560" height="315" src="https://www.youtube.com/embed/FUOeyxwePoY?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br></p>
+
+<p><iframe width="560" height="315" src="https://www.youtube.com/embed/ZfLjTzwpdUA?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br></p>
+
+<p><iframe width="560" height="315" src="https://www.youtube.com/embed/ZqmI7NfqXOU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br></p>
+
+<p>Published Blog Posts on other websites:<br>
+<a href="https://blog.techsnips.io/how-to-managed-distributed-file-system-dfs-links-with-powershell/" rel="noopener noreferrer" target="_blank">How to Managed Distributed File System (DFS) Links with PowerShell</a></p>
+
+<p>Find out more about Scott:<br>
+    <a href="https://twitter.com/The_Scott_Hurst" class="btn btn--twitter">Twitter</a><br>
+    <a href="https://www.linkedin.com/in/brandonhurst" class="btn btn--linkedin">LinkedIn</a><br>
+    <a href="https://github.com/hurtrus" class="btn btn--light-outline">GitHub</a><br>
+    <a href="mailto:scott+ghioblog@hurst.systems" class="btn btn--danger">Email</a><br></p>
+</article>
+			</div>
+		</section>
+	</div>
+</div>
+</div>
+		</div>
+	</div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/site.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script><script src="https://twemoji.maxcdn.com/2/twemoji.min.js?2.6"></script>
+
+
+	<script>
+		window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+		ga('create', 'UA-121996036-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script id="dsq-count-scr" src="//hurst-systems.disqus.com/count.js" async></script>
+
+
+<script>
+	(function () {
+	  console.log("Twemoji up and making stuff colourful!");
+	  for (var b = document.getElementsByClassName("twemoji"), a = 0; a < b.length; a++) {
+		twemoji.parse(b[a]);
+	  }
+	})();
+</script>
+
+</body>
+</html>
