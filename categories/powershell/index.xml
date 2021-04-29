@@ -115,14 +115,5 @@ About Functions Advanced Parameters
 Which leads to learning how to use Plaster What is Plaster</description>
     </item>
     
-    <item>
-      <title>The Adventure Begins</title>
-      <link>https://hurst.systems/posts/the-adventure-begins/</link>
-      <pubDate>Tue, 10 Jul 2018 10:29:23 -0500</pubDate>
-      
-      <guid>https://hurst.systems/posts/the-adventure-begins/</guid>
-      <description>The Adventure Begins In the beginning&amp;hellip; This blog is probably well over due, if for no other reason than just keeping track of the things I learn in PowerShell so that I don&amp;rsquo;t forget them later. This &amp;ldquo;blog&amp;rdquo; might even work great in keeping track of those little details that make different commands work..just so&amp;hellip; I might even remember that I wrote down those little gotchas in a place to remind myself.</description>
-    </item>
-    
   </channel>
 </rss>
