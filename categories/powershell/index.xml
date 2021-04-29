@@ -64,34 +64,6 @@ Absolute Path: Like having the “Country, State, City, Street address, floor, r
     </item>
     
     <item>
-      <title>PowerShell Notes</title>
-      <link>https://hurst.systems/posts/powershell-notes/</link>
-      <pubDate>Thu, 04 Oct 2018 11:29:23 -0500</pubDate>
-      
-      <guid>https://hurst.systems/posts/powershell-notes/</guid>
-      <description>Notes about various things that I wanted to find again later, or a few things that would be useful to others. From &amp;ldquo;Free eBooks&amp;rdquo; to links about HashTables and Arrays, there will not be any rhyme or reason to this post. Enjoy.
-Free eBooks: Historical Trend Reports in Powershell
-Where and Foreach Methods
-PowerShell Advanced Functions
-Kevin Marquette on PowerShell Theory
-================
-Automatically Store Last Output
-================
-Hashtables Everything you wanted to know about HashTables</description>
-    </item>
-    
-    <item>
-      <title>PowerShell - Pester Notes</title>
-      <link>https://hurst.systems/posts/powershell-pester-notes/</link>
-      <pubDate>Sun, 23 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://hurst.systems/posts/powershell-pester-notes/</guid>
-      <description>Pester Time to learn Pester. Not so much a blog post as it is a reading/reference list.
-What is Pester? &amp;ldquo;Pester is the ubiquitous test and mock framework for PowerShell&amp;rdquo; or in other words, tests written to test the functions you have created without actually running those commands.
-Are you asking yourself &amp;ldquo;why bother? just run the code and see if it works?&amp;rdquo; Yeah me too, but seems like everyone is doing it&amp;hellip; so might as well jump off a bridge also, hopefully by the end I will see its value.</description>
-    </item>
-    
-    <item>
       <title>PowerShell - Adding WhatIf and Confirm</title>
       <link>https://hurst.systems/posts/powershell-adding-whatif-and-confirm/</link>
       <pubDate>Thu, 23 Aug 2018 10:29:23 -0500</pubDate>

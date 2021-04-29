@@ -28,16 +28,6 @@
   </url>
   
   <url>
-    <loc>https://hurst.systems/posts/powershell-notes/</loc>
-    <lastmod>2018-10-04T11:29:23-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hurst.systems/posts/powershell-pester-notes/</loc>
-    <lastmod>2018-09-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://hurst.systems/posts/powershell-adding-whatif-and-confirm/</loc>
     <lastmod>2018-08-23T10:29:23-05:00</lastmod>
   </url>
